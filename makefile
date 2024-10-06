@@ -12,8 +12,10 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) -o $@ $^
 
+$(BUILD_DIR): 
+	mkdir $(BUILD_DIR)
+
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
-	mkdir -p $(BUILD_DIR)  # Create build directory if it doesn't exist
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run:
