@@ -7,7 +7,7 @@ SRCS = $(wildcard $(SRC_DIR)/*.c)
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 TARGET = $(BUILD_DIR)/robby
 
-all: $(TARGET)
+all: $(BUILD_DIR) $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(CC) -o $@ $^
