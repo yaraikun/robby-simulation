@@ -26,7 +26,6 @@
 #define NUMBER_OF_TERMS 10
 
 
-
 // Computes and returns the value of x raised to n. 
 double RaiseTo(double x, int n) {
 
@@ -45,7 +44,6 @@ double RaiseTo(double x, int n) {
 }
 
 
-
 // Computes and returns the value of the factorial of n.
 double factorial(int n) {
 
@@ -62,7 +60,6 @@ double factorial(int n) {
     // Return calculated of x!.
     return result;
 }
-
 
 
 // Computes and returns the value o the cosine of angle x.
@@ -88,7 +85,6 @@ double cosine(double x) {
     // Return calculated result of cos(x).
     return result;
 }
-
 
 
 // Computes and returns the value o the sine of angle c.
