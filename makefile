@@ -22,7 +22,6 @@ run:
 	./$(TARGET)
 
 clean:
-	rm -rf $(BUILD_DIR)/*
-	touch $(BUILD_DIR)/.gitkeep
+	find $(BUILD_DIR) -type f ! -name '.gitkeep' -exec rm -f {} +
 
 .PHONY: all run clean
