@@ -19,7 +19,7 @@
                                              
 #include <stdio.h>
 
-#include "../include/mp2_math.h"  
+#include "../include/mp2_math.h"
 #include "../include/mp3_robot.h"
 
 
@@ -28,7 +28,7 @@
 
   Task:       
     Initialize/Reset the robot’s position to (0, 0), and its orientation to 
-    0 degree.  
+    0 degree.
 ******************************************************************************/
 void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
 
@@ -49,7 +49,7 @@ void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
 void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle) {
 
      /* fill-up the body of this function */
-}   
+}
 
 
 /****************************************************************************** 
@@ -64,12 +64,13 @@ void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle) {
   Post-Condition:
     a. *pfRobotX is the robot's new x-coordinate (after translation)
     b. *pfRobotY is the robot's new y-coordinate (after translation)
-   
+
   Task:
     Translate the robot forward by a distance equivalent to fDistance.
-    Compute the robot’s new coordinates.    
+    Compute the robot’s new coordinates.
 ******************************************************************************/
-void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, double dRobotAngle) {
+void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, 
+                      double dRobotAngle) {
 
      /* fill-up the body of this function */
 
@@ -81,7 +82,7 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, double 
   Backward Translation Command 
  
 
-  Pre-Condition: 
+  Pre-Condition:
     a. fDistance contains the translation distance
     b. *pfRobotX is the robot's current x-coordinate (before translation)
     c. *pfRobotY is the robot's current y-coordinate (before translation)
@@ -90,10 +91,10 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, double 
   Post-Condition:
     a. *pfRobotX is the robot's new x-coordinate (after translation)
     b. *pfRobotY is the robot's new y-coordinate (after translation)
-   
+
   Task:
     Translate the robot forward by a distance equivalent to fDistance.
-    Compute the robot’s new coordinates. 
+    Compute the robot’s new coordinates.
 
 ******************************************************************************/
 void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY, 
@@ -105,10 +106,10 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY,
 }
 
 
-/****************************************************************************** 
-  Counterclockwise Rotation Command 
+/******************************************************************************
+  Counterclockwise Rotation Command
 
-  Pre-Condition: 
+  Pre-Condition:
      a. dTheta is the angle of rotation
      b. *pdRobotAngle is the robot's current orientation (before rotation)
 
@@ -117,9 +118,9 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY,
 
    Task:
      Rotate the robot counterclockwise by an angle equivalent to dTheta.
-     Compute the robot’s new orientation.  
+     Compute the robot’s new orientation.
 
-     VERY IMPORTANT NOTE!!!  Make sure that you keep the value of 
+     VERY IMPORTANT NOTE!!!  Make sure that you keep the value of
      *pdRobotAngle within the range  -360.0 to 360.0 degrees.
 ******************************************************************************/
 void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
@@ -128,10 +129,10 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
 }
 
 
-/****************************************************************************** 
-  Clockwise Rotation Command 
+/******************************************************************************
+  Clockwise Rotation Command
 
-  Pre-Condition: 
+  Pre-Condition:
      a. dTheta is the angle of rotation
      b. *pdRobotAngle is the robot's current orientation (before rotation)
 
@@ -140,10 +141,10 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
 
    Task:
      Rotate the robot clockwise by an angle equivalent to dTheta.
-     Compute the robot’s new orientation.  
+     Compute the robot’s new orientation.
 
-     VERY IMPORTANT NOTE!!!  Make sure that you keep the value of 
-     *pdRobotAngle within the range  -360 to 360 degrees. 
+     VERY IMPORTANT NOTE!!!  Make sure that you keep the value of
+     *pdRobotAngle within the range  -360 to 360 degrees.
 ******************************************************************************/
 void RotateClockwise(double dTheta, double *pdRobotAngle) {
 
@@ -155,13 +156,13 @@ void RotateClockwise(double dTheta, double *pdRobotAngle) {
   Quit Simulation Command
 
   Task:
-    Simply display a message "END SIMULATION" (this should be the exact 
+    Simply display a message "END SIMULATION" (this should be the exact
     string).
 ******************************************************************************/
 void Quit(void) {
 
-     /* fill-up the body of this function */    
+     /* fill-up the body of this function */
 }
 
-  
-/***************************  END OF THIS FILE *******************************/
+
+/**************************** END OF THIS FILE *******************************/
