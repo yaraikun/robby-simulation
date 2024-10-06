@@ -29,8 +29,8 @@
   Task:       
     Initialize/Reset the robot’s position to (0, 0), and its orientation to 0 degree.  
 ****************************************************************************/
-void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle)
-{
+void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
+
      /* fill-up the body of this function */
 }
 
@@ -45,8 +45,8 @@ void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle)
     be 2 digits after the decimal point.  Output should always start on a
     new line.
 ****************************************************************************/
-void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle)
-{
+void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle) {
+
      /* fill-up the body of this function */
 }   
 
@@ -68,8 +68,8 @@ void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle)
     Translate the robot forward by a distance equivalent to fDistance.
     Compute the robot’s new coordinates.    
 ****************************************************************************/
-void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, double dRobotAngle)
-{
+void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, double dRobotAngle) {
+
      /* fill-up the body of this function */
 
      /* Note: you will need to call cosine() and sine() in this function. */
@@ -95,8 +95,8 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, double 
     Compute the robot’s new coordinates. 
 
 ****************************************************************************/
-void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY, double dRobotAngle)
-{
+void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY, double dRobotAngle) {
+
      /* fill-up the body of this function */
 
      /* Note: you will need to call cosine() and sine() in this function. */
@@ -120,8 +120,8 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY, double
      VERY IMPORTANT NOTE!!!  Make sure that you keep the value of 
      *pdRobotAngle within the range  -360.0 to 360.0 degrees.
 ****************************************************************************/
-void RotateCounterClockwise(double dTheta, double *pdRobotAngle)
-{
+void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
+
      /* fill-up the body of this function */
 }
 
@@ -143,8 +143,8 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle)
      VERY IMPORTANT NOTE!!!  Make sure that you keep the value of 
      *pdRobotAngle within the range  -360 to 360 degrees. 
 ****************************************************************************/
-void RotateClockwise(double dTheta, double *pdRobotAngle)
-{
+void RotateClockwise(double dTheta, double *pdRobotAngle) {
+
      /* fill-up the body of this function */
 }
 
@@ -155,8 +155,8 @@ void RotateClockwise(double dTheta, double *pdRobotAngle)
   Task:
     Simply display a message "END SIMULATION" (this should be the exact string).
 ****************************************************************************/
-void Quit(void)
-{
+void Quit(void) {
+
      /* fill-up the body of this function */    
 }
 

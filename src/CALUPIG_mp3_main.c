@@ -21,8 +21,8 @@
 
 
 /* main function for Robby simulation */
-int main(void)
-{
+int main(void) {
+
   /* 
      NOTE #1:
      You are allowed to declare only SIX variables corresponding to:
@@ -63,7 +63,3 @@ int main(void)
 
   return 0;
 }
-
-
-
-
