@@ -17,7 +17,7 @@
 /*    produce the executable file.                                            */      
 
 #include <stdio.h>
-#include "mp3_robot.h"
+#include "../include/mp3_robot.h"
 
 
 /* main function for Robby simulation */

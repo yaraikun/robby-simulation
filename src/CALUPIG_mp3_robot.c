@@ -19,8 +19,8 @@
                                              
 #include <stdio.h>
 
-#include "mp2_math.h"  
-#include "mp3_robot.h"
+#include "../include/mp2_math.h"  
+#include "../include/mp3_robot.h"
 
 
 /****************************************************************************
