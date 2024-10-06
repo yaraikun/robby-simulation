@@ -23,5 +23,6 @@ run:
 
 clean:
 	rm -rf $(BUILD_DIR)/*
+	touch $(BUILD_DIR)/.gitkeep
 
 .PHONY: all run clean
