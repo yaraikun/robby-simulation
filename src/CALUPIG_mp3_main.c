@@ -1,20 +1,20 @@
-/* CCPROG1 Machine Problem Part 3                                             */
-/* LASTNAME FIRSTNAME  (change this to your own name)                         */
-/* SECTION (change this to your own section)                                  */
-/*                                                                            */
-/* This file contains the main() function for testing the robot control       */
-/* functions in lastname_mp3_robot.c                                          */
-/*                                                                            */
-/* NOTES:                                                                     */
-/* 1. Change the word "lastname" in the filename to your own last name.       */
-/*    For example, if your last name is SANTOS, then this file should be      */
-/*    named as SANTOS_mp3_main.c                                              */ 
-/* 2. Your main task is to fill-up the body of main() function.               */
-/* 3. You are NOT ALLOWED to add new codes other than the implementation      */
-/*    of the body of the main() function.                                     */  
-/* 4. You have to compile and link this with the object files corresponding   */
-/*    to your lastname_mp3_robot.obj and lastname_mp2_math.obj in order to    */
-/*    produce the executable file.                                            */      
+/* CCPROG1 Machine Problem Part 3                                            */
+/* CALUPIG, Evan Riley L.                                                    */
+/* S24B                                                                      */
+/*                                                                           */
+/* This file contains the main() function for testing the robot control      */
+/* functions in lastname_mp3_robot.c                                         */
+/*                                                                           */
+/* NOTES:                                                                    */
+/* 1. Change the word "lastname" in the filename to your own last name.      */
+/*    For example, if your last name is SANTOS, then this file should be     */
+/*    named as SANTOS_mp3_main.c                                             */ 
+/* 2. Your main task is to fill-up the body of main() function.              */
+/* 3. You are NOT ALLOWED to add new codes other than the implementation     */
+/*    of the body of the main() function.                                    */  
+/* 4. You have to compile and link this with the object files corresponding  */
+/*    to your lastname_mp3_robot.obj and lastname_mp2_math.obj in order to   */
+/*    produce the executable file.                                           */      
 
 #include <stdio.h>
 #include "../include/mp3_robot.h"
@@ -53,10 +53,11 @@ int main(void) {
   
    
      NOTE #4: (VERY IMPORTANT!)
-     The main() function that you are implementing here is actually for your use;
+     The main() function that you are implementing here is actually for your 
+     use;
      i.e., so that you can check and verify the correctness of your solution.
-     For the actual check, I will use my own main() function and link it 
-     with your lastname_mp3_robot and lastname_mp2_math object files.  The resulting 
+     For the actual check, I will use my own main() function and link it with 
+     your lastname_mp3_robot and lastname_mp2_math object files.  The resulting 
      executable file should also be 100% semantically correct for you to earn a 
      perfect grade.   
   */
