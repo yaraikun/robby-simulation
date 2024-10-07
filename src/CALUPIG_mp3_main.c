@@ -17,17 +17,17 @@
 /*    produce the executable file.                                           */      
 
 #include <stdio.h>
-#include <mp3_robot.h>
+#include "mp3_robot.h"
 
 
-/* main function for Robby simulation */
+// Main function for Robby simulation.
 int main(void) {
 
     // Declared six variables.
     float fRobotX, fRobotY;         // Robby's position (x, y).
     double dRobotAngle;             // Robby's orientation (in degrees).
     float fDistance;                // Robby's translation distance.
-    double dTheta;          // 
+    double dTheta;                  // 
     int nCommandCode;               // User command code.
 
     // Call the function InitializeReset() to initialize the robot's position
@@ -49,6 +49,7 @@ int main(void) {
                 "Your command, master?: ");
         scanf("%d", &nCommandCode);
 
+        // Switch case statement for command code.
         switch(nCommandCode) {
             case 0:
                 DisplayStatus(fRobotX, fRobotY, dRobotAngle);
@@ -100,7 +101,7 @@ int main(void) {
         ask the user to input the appropriate data value using scanf().
      3. Call the function that corresponds to the command code.
      4. If the command code is not yet for the Quit() function, repeat again
-        from step 2.  If the command code is for quit, terminate the program
+        from step 2. If the command code is for quit, terminate the program
         execution.
 
     
