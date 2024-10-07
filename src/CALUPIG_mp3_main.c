@@ -31,9 +31,22 @@ int main(void) {
     double fRotationAngle;
     int nCommandCode;
 
+    // Call the function InitializeReset() to initialize the robot's position
+    // and orientation.
     InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
 
     while (1) {
+        // Ask user to input command code.
+        printf("Enter command code:\n"
+                "0: Display Status\n"
+                "1: Reset\n"
+                "2: Translate Backward\n"
+                "3: Rotate Clockwise\n"
+                "4: Quit\n"
+                "8: Translate Forward\n"
+                "9: Rotate CounterClockwise\n");
+        scanf("%d", &nCommandCode);
+
     }
   /* 
      NOTE #1:
