@@ -23,12 +23,16 @@
 /* main function for Robby simulation */
 int main(void) {
 
+    printf("Hello from main\n");
+
     float fRobotX, fRobotY;
     double dRobotAngle;
     float fDistance;
     double fRotationAngle;
     int nCommandCode;
 
+    while (1) {
+    }
   /* 
      NOTE #1:
      You are allowed to declare only SIX variables corresponding to:
