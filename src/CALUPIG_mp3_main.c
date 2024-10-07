@@ -23,13 +23,15 @@
 /* main function for Robby simulation */
 int main(void) {
 
-    printf("Hello from main\n");
+    printf("hello from main.c\n");
 
     float fRobotX, fRobotY;
     double dRobotAngle;
     float fDistance;
     double fRotationAngle;
     int nCommandCode;
+
+    InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
 
     while (1) {
     }
