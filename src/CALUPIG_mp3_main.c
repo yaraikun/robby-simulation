@@ -27,7 +27,7 @@ int main(void) {
     float fRobotX, fRobotY;         // Robby's position (x, y).
     double dRobotAngle;             // Robby's orientation (in degrees).
     float fDistance;                // Robby's translation distance.
-    double fRotationAngle;          // 
+    double dTheta;          // 
     int nCommandCode;               // User command code.
 
     // Call the function InitializeReset() to initialize the robot's position
@@ -48,6 +48,26 @@ int main(void) {
                 "Your command, master?: ");
         scanf("%d", &nCommandCode);
 
+        switch(nCommandCode) {
+            case 0:
+                DisplayStatus(fRobotX, fRobotY, dRobotAngle);
+            case 1:
+                InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
+            case 2:
+                TranslateBackward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
+                scanf("%f", &fDistance);
+            case 3:
+                RotateClockwise(dTheta, &dRobotAngle);
+                scanf("%lf", &dTheta);
+            case 4:
+                Quit();
+            case 8:
+                TranslateForward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
+                scanf("%f", &fDistance);
+            case 9:
+                RotateCounterClockwise(dTheta, &dRobotAngle);
+                scanf("%lf", &dTheta);
+        }
     }
   /* 
      NOTE #1:
