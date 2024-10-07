@@ -36,6 +36,7 @@ int main(void) {
 
     // Start of simulation loop.
     while (1) {
+
         // Ask user to input command code.
         printf("Command Codes:\n"
                 "0: Display Status\n"
@@ -51,22 +52,33 @@ int main(void) {
         switch(nCommandCode) {
             case 0:
                 DisplayStatus(fRobotX, fRobotY, dRobotAngle);
+                break;
             case 1:
                 InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
+                break;
             case 2:
-                TranslateBackward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
+                printf("Enter translation distance: ");
                 scanf("%f", &fDistance);
+                TranslateBackward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
+                break;
             case 3:
-                RotateClockwise(dTheta, &dRobotAngle);
+                printf("Enter rotation angle: ");
                 scanf("%lf", &dTheta);
+                RotateClockwise(dTheta, &dRobotAngle);
+                break;
             case 4:
                 Quit();
+                break;
             case 8:
-                TranslateForward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
+                printf("Enter translation distance: ");
                 scanf("%f", &fDistance);
+                TranslateForward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
+                break;
             case 9:
-                RotateCounterClockwise(dTheta, &dRobotAngle);
+                printf("Enter rotation angle: ");
                 scanf("%lf", &dTheta);
+                RotateCounterClockwise(dTheta, &dRobotAngle);
+                break;
         }
     }
   /* 
