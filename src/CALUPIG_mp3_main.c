@@ -23,28 +23,29 @@
 /* main function for Robby simulation */
 int main(void) {
 
-    printf("hello from main.c\n");
-
-    float fRobotX, fRobotY;
-    double dRobotAngle;
-    float fDistance;
-    double fRotationAngle;
-    int nCommandCode;
+    // Declared six variables.
+    float fRobotX, fRobotY;         // Robby's position (x, y).
+    double dRobotAngle;             // Robby's orientation (in degrees).
+    float fDistance;                // Robby's translation distance.
+    double fRotationAngle;          // 
+    int nCommandCode;               // User command code.
 
     // Call the function InitializeReset() to initialize the robot's position
     // and orientation.
     InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
 
+    // Start of simulation loop.
     while (1) {
         // Ask user to input command code.
-        printf("Enter command code:\n"
+        printf("Command Codes:\n"
                 "0: Display Status\n"
                 "1: Reset\n"
                 "2: Translate Backward\n"
                 "3: Rotate Clockwise\n"
                 "4: Quit\n"
                 "8: Translate Forward\n"
-                "9: Rotate CounterClockwise\n");
+                "9: Rotate CounterClockwise\n"
+                "Your command, master?: ");
         scanf("%d", &nCommandCode);
 
     }
