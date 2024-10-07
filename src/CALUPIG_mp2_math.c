@@ -21,7 +21,7 @@
 /*       inside the function definitions!                                    */
 /*****************************************************************************/
 
-#include "../include/mp2_math.h"
+#include "mp2_math.h"
 
 #define NUMBER_OF_TERMS 10
 
