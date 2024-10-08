@@ -89,7 +89,9 @@ int getUserCommand() {
     int nCommandCode;
     while (1) {
         displayCommands();
-        if (scanf("%d", &nCommandCode) != 1 || nCommandCode < 0 || nCommandCode > 9) {
+        if (scanf("%d", &nCommandCode) != 1 || 
+                nCommandCode < 0 || 
+                nCommandCode > 9) {
             printf("Invalid input. Please enter a valid command code.\n");
             while (getchar() != '\n'); // Clear input buffer.
             pause();                   // Call pause function.
@@ -102,7 +104,8 @@ int getUserCommand() {
 
 
 // Handle the command logic based on user input
-void handleCommand(int command, float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
+void handleCommand(int command, float *pfRobotX, float *pfRobotY, 
+                   double *pdRobotAngle) {
     switch (command) {
         case DISPLAY_STATUS:
             DisplayStatus(*pfRobotX, *pfRobotY, *pdRobotAngle); 
