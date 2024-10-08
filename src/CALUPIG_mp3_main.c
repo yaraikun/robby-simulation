@@ -40,41 +40,54 @@ int main(void) {
     // Start of simulation loop.
     while (1) {
 
-        // Ask user to input command code.
-        printf("Command Codes:\n"
-                "0: Display Status\n"
-                "1: Reset\n"
-                "2: Translate Backward\n"
-                "3: Rotate Clockwise\n"
-                "4: Quit\n"
-                "8: Translate Forward\n"
-                "9: Rotate CounterClockwise\n"
-                "Your command, master?: ");
-
-        // Command code input validation.
+        // User command code input. Input validation loop.
         while (1) {
 
-            // Check if input was successful.
+            // Clear the screen and display command options.
+            printf("\033[H\033[J"
+                    "Command Codes:\n"
+                    "0: Display Status\n"
+                    "1: Reset\n"
+                    "2: Translate Backward\n"
+                    "3: Rotate Clockwise\n"
+                    "4: Quit\n"
+                    "8: Translate Forward\n"
+                    "9: Rotate CounterClockwise\n"
+                    "Your command, master?: "); 
+
+            // Read user input
             if (scanf("%d", &nCommandCode) != 1) {
+
+                // If input wasn't an int, print error and clear input buffer
                 printf("Invalid input. Please enter a valid command code.\n");
-                while (getchar() != '\n'); // Clear input buffer
-                continue;
+                while (getchar() != '\n'); // Clear input buffer.
+
+                // Pause before clearing the screen
+                printf("Press Enter to continue...");
+                while (getchar() != '\n'); // Wait for Enter.
+                printf("\033[H\033[J");    // Clear screen.
+                continue;                  // Loop back.
             }
 
-            // Clear input buffer to remove any remaining characters.
+            // Clear input buffer. 
             while (getchar() != '\n');
 
-            // Valid input; check if it is within the expected range.
+            // Valid input; cooked.
             if (nCommandCode >= 0 && nCommandCode <= 9) {
                 break;             
             }
+
+            // Invalid input; cooked.
             else {
-                // Invalid input; inform the user and wait for new input.
+                // Invalid command code; print error.
                 printf("Invalid command code. Please try again.\n");
                 printf("Press Enter to continue..."); // Pause before clearing.
                 while (getchar() != '\n');            // Wait for Enter.
+                printf("\033[H\033[J"); // Clear screen after invalid input
             }
         }
+
+
 
         // Switch case statement for different command codes.
         switch(nCommandCode) {
