@@ -18,7 +18,6 @@
 /*    c. changing the return type, function name and parametrizations        */
                                              
 #include <stdio.h>
-
 #include "mp2_math.h"
 #include "mp3_robot.h"
 
@@ -32,7 +31,6 @@
 ******************************************************************************/
 void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
 
-     /* fill-up the body of this function */
     *pfRobotX = 0;
     *pfRobotY = 0;
     *pdRobotAngle = 0;
@@ -51,7 +49,6 @@ void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
 ******************************************************************************/
 void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle) {
 
-     /* fill-up the body of this function */
     printf("Robby is at point (%.4f, %.4f) with an inclination of %.2lf\n",
             fRobotX, fRobotY, dRobotAngle);
 }
@@ -77,10 +74,13 @@ void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle) {
 void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, 
                       double dRobotAngle) {
 
-     /* fill-up the body of this function */
-     /* Note: you will need to call cosine() and sine() in this function. */
+    // Convert angle to radians.
     dRobotAngle *= PI / 180;
+
+    // Update Robby's x-coordinate.
     *pfRobotX += fDistance * cosine(dRobotAngle);
+
+    // Update Robby's y-coordinate.
     *pfRobotY += fDistance * sine(dRobotAngle);
 }
 
@@ -107,10 +107,13 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY,
 void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY, 
                        double dRobotAngle) {
 
-     /* fill-up the body of this function */
-     /* Note: you will need to call cosine() and sine() in this function. */
+    // Convert angle to radians.
     dRobotAngle *= PI / 180;
+
+    // Update Robby's x-coordinate.
     *pfRobotX -= fDistance * cosine(dRobotAngle);
+
+    // Update Robby's y-coordinate.
     *pfRobotY -= fDistance * sine(dRobotAngle);
 }
 
@@ -134,12 +137,12 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY,
 ******************************************************************************/
 void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
 
-     /* fill-up the body of this function */
+    // Update Robby's inclination.
     *pdRobotAngle += dTheta;
 
-    while (*pdRobotAngle > 360) *pdRobotAngle -= 360;
-    while (*pdRobotAngle < -360) *pdRobotAngle += 360;
-    if (*pdRobotAngle == 360) *pdRobotAngle = 0;
+    // Normalize angle to be within the range of -360 to 360 degrees.
+    while (*pdRobotAngle >= 360) *pdRobotAngle -= 360;
+    while (*pdRobotAngle <= -360) *pdRobotAngle += 360;
 }
 
 
@@ -162,12 +165,12 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
 ******************************************************************************/
 void RotateClockwise(double dTheta, double *pdRobotAngle) {
 
-     /* fill-up the body of this function */
+    // Update Robby's inclination.
     *pdRobotAngle -= dTheta;
 
-    while (*pdRobotAngle > 360) *pdRobotAngle -= 360;
-    while (*pdRobotAngle < -360) *pdRobotAngle += 360;
-    if (*pdRobotAngle == 360) *pdRobotAngle = 0;
+    // Normalize angle to be within the range of -360 to 360 degrees.
+    while (*pdRobotAngle >= 360) *pdRobotAngle -= 360;
+    while (*pdRobotAngle <= -360) *pdRobotAngle += 360;
 }
 
 
@@ -180,7 +183,6 @@ void RotateClockwise(double dTheta, double *pdRobotAngle) {
 ******************************************************************************/
 void Quit(void) {
 
-     /* fill-up the body of this function */
     printf("END SIMULATION\n");
 }
 
