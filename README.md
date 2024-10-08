@@ -8,21 +8,21 @@ This project implements a simulation of a robot named Robby, allowing users to c
 
 1. **`lastname_mp3_main.c`**: Contains the main function for testing the robot control functions.
 2. **`lastname_mp3_robot.c`**: Contains the implementation of the robot's control functions.
-3. **`mp2_math.h`**: Header file declaring mathematical functions used in the simulation.
-4. **`mp2_math.c`**: Contains implementations for mathematical operations like sine, cosine, and power functions.
+3. **`mp2_math.c`**: Contains implementations for mathematical operations like sine, cosine, and power functions.
+4. **`mp2_math.h`**: Header file declaring mathematical functions used in the simulation.
 5. **`mp3_robot.h`**: Header file that defines constants and function prototypes for robot control.
 
 ## Command Codes
 
 The following command codes are available for controlling Robby:
 
-- **0**: Display Status
 - **1**: Reset
 - **2**: Translate Backward
 - **3**: Rotate Clockwise
 - **4**: Quit
 - **8**: Translate Forward
 - **9**: Rotate CounterClockwise
+- **0**: Display Status
 
 ## How to Use
 
