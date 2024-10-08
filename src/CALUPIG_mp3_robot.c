@@ -79,6 +79,7 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY,
 
      /* fill-up the body of this function */
      /* Note: you will need to call cosine() and sine() in this function. */
+    dRobotAngle *= PI / 180;
     *pfRobotX = fDistance * cosine(dRobotAngle);
     *pfRobotY = fDistance * sine(dRobotAngle);
 }
@@ -108,6 +109,7 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY,
 
      /* fill-up the body of this function */
      /* Note: you will need to call cosine() and sine() in this function. */
+    dRobotAngle *= PI / 180;
     *pfRobotX = -fDistance * cosine(dRobotAngle);
     *pfRobotY = -fDistance * sine(dRobotAngle);
 }
@@ -133,6 +135,11 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY,
 void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
 
      /* fill-up the body of this function */
+    *pdRobotAngle += dTheta;
+
+    while (*pdRobotAngle > 360) *pdRobotAngle -= 360;
+    while (*pdRobotAngle < -360) *pdRobotAngle += 360;
+    if (*pdRobotAngle == 360) *pdRobotAngle = 0;
 }
 
 
@@ -156,6 +163,11 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
 void RotateClockwise(double dTheta, double *pdRobotAngle) {
 
      /* fill-up the body of this function */
+    *pdRobotAngle -= dTheta;
+
+    while (*pdRobotAngle > 360) *pdRobotAngle -= 360;
+    while (*pdRobotAngle < -360) *pdRobotAngle += 360;
+    if (*pdRobotAngle == 360) *pdRobotAngle = 0;
 }
 
 
@@ -169,6 +181,7 @@ void RotateClockwise(double dTheta, double *pdRobotAngle) {
 void Quit(void) {
 
      /* fill-up the body of this function */
+    printf("END SIMULATION\n");
 }
 
 
