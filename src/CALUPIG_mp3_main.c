@@ -23,7 +23,7 @@
 // Main function for Robby simulation.
 int main(void) {
 
-    // printf("\033[H\033[J");
+    printf("\033[H\033[J");
 
     // Declared six variables.
     float fRobotX, fRobotY;         // Robby's position (x, y).
@@ -52,11 +52,13 @@ int main(void) {
 
         // Command code input validation.
         while (1) {
+
             if (scanf("%d", &nCommandCode) != 1) {
                 printf("Invalid input. Please enter a valid command code.\n");
                 while (getchar() != '\n'); // Clear input buffer
                 continue;
             }
+
             // Clear input buffer to remove any remaining characters
             while (getchar() != '\n');
             if (nCommandCode >= 0 && nCommandCode <= 9) {
@@ -68,54 +70,53 @@ int main(void) {
 
         // Switch case statement for command code.
         switch(nCommandCode) {
-            case 0:
+            case DISPLAY_STATUS:
                 DisplayStatus(fRobotX, fRobotY, dRobotAngle);
+                printf("Press Enter to continue..."); // Pause before clearing
+                while (getchar() != '\n'); // Wait for Enter
                 break;
-            case 1:
+            case RESET:
                 InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
+                printf("Robot has been reset to initial position and angle.\n");
+                printf("Press Enter to continue..."); // Pause before clearing
+                while (getchar() != '\n'); // Wait for Enter
                 break;
-            case 2:
+            case TRANSLATE_BACKWARD:
                 printf("Enter translation distance: ");
                 if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
-                    TranslateBackward(fDistance, &fRobotX, &fRobotY,
-                                      dRobotAngle);
+                    TranslateBackward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
                 } else {
-                    printf("Invalid distance. Please enter a non-negative " 
-                            "number.\n");
+                    printf("Invalid distance. Please enter a non-negative number.\n");
                     while (getchar() != '\n'); // Clear input buffer
                 }
                 break;
-            case 3:
+            case ROTATE_CLOCKWISE:
                 printf("Enter rotation angle: ");
                 if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
                     RotateClockwise(dTheta, &dRobotAngle);
                 } else {
-                    printf("Invalid angle. Please enter a non-negative " 
-                            "number.\n");
+                    printf("Invalid angle. Please enter a non-negative number.\n");
                     while (getchar() != '\n'); // Clear input buffer
                 }
                 break;
-            case 4:
+            case QUIT:
                 Quit();
                 return 0;
-            case 8:
+            case TRANSLATE_FORWARD:
                 printf("Enter translation distance: ");
                 if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
-                    TranslateForward(fDistance, &fRobotX, &fRobotY,
-                                     dRobotAngle);
+                    TranslateForward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
                 } else {
-                    printf("Invalid distance. Please enter a non-negative " 
-                            "number.\n");
+                    printf("Invalid distance. Please enter a non-negative number.\n");
                     while (getchar() != '\n'); // Clear input buffer
                 }
                 break;
-            case 9:
+            case ROTATE_COUNTERCLOCKWISE:
                 printf("Enter rotation angle: ");
                 if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
                     RotateCounterClockwise(dTheta, &dRobotAngle);
                 } else {
-                    printf("Invalid angle. Please enter a non-negative " 
-                            "number.\n");
+                    printf("Invalid angle. Please enter a non-negative number.\n");
                     while (getchar() != '\n'); // Clear input buffer
                 }
                 break;
@@ -123,6 +124,9 @@ int main(void) {
                 printf("Invalid command code. Please try again.\n");
                 break;
         }
+
+        // Clear screen after command to maybe make it more readable.
+        printf("\033[H\033[J");
     }
 
     // Program completed succesfully.
