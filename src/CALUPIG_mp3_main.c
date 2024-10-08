@@ -54,7 +54,7 @@ int main(void) {
         // Command code input validation.
         while (1) {
 
-            // Check if input was succesful.
+            // Check if input was successful.
             if (scanf("%d", &nCommandCode) != 1) {
                 printf("Invalid input. Please enter a valid command code.\n");
                 while (getchar() != '\n'); // Clear input buffer
@@ -64,14 +64,15 @@ int main(void) {
             // Clear input buffer to remove any remaining characters.
             while (getchar() != '\n');
 
-            // Valid input; exit loop.
+            // Valid input; check if it is within the expected range.
             if (nCommandCode >= 0 && nCommandCode <= 9) {
                 break;             
             }
-
-            // Invalid input; continue.
             else {
+                // Invalid input; inform the user and wait for new input.
                 printf("Invalid command code. Please try again.\n");
+                printf("Press Enter to continue..."); // Pause before clearing.
+                while (getchar() != '\n');            // Wait for Enter.
             }
         }
 
@@ -80,17 +81,31 @@ int main(void) {
 
             // Display Robby's current position.
             case DISPLAY_STATUS: 
+
+                // Call display status function.
                 DisplayStatus(fRobotX, fRobotY, dRobotAngle);
+
+                // Pause function.
                 printf("Press Enter to continue..."); // Pause before clearing.
                 while (getchar() != '\n');            // Wait for Enter.
+
+                // Leave switch case.
                 break;
 
             // Reset Robby's position to (0, 0), Angle 0.
             case RESET: 
+
+                // Call initialize reset function.
                 InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
+
+                // Print Robby's state after function call.
                 printf("Robot has been reset to initial position and angle.\n");
+
+                // Pause function.
                 printf("Press Enter to continue..."); // Pause before clearing.
                 while (getchar() != '\n');            // Wait for Enter.
+
+                // Leave switch case.
                 break;
 
             // Move Robby backwards.
@@ -118,23 +133,36 @@ int main(void) {
                 // Pause function
                 printf("Press Enter to continue..."); // Pause before clearing.
                 while (getchar() != '\n');            // Wait for Enter.
+
+                // Leave switch case.
                 break;
 
             // Rotate Robby clockwise.
             case ROTATE_CLOCKWISE: 
+
+                // User inputs rotation angle.
                 printf("Enter rotation angle: ");
+
+                // If input is valid, proceed.
                 if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
                     RotateClockwise(dTheta, &dRobotAngle);
                     printf("Robby rotated to angle %.4f degrees.\n",
                             dRobotAngle);
                     while (getchar() != '\n');        // Clear input buffer.
-                } else {
+                }
+
+                // If input is invalid. Print error.
+                else {
                     printf("Invalid angle. Please enter a non-negative number."
                            "\n");
                     while (getchar() != '\n');        // Clear input buffer.
                 }
+
+                // Pause function.
                 printf("Press Enter to continue..."); // Pause before clearing.
                 while (getchar() != '\n');            // Wait for Enter.
+
+                // Leave switch case.
                 break;
 
             // Quit program.
@@ -144,46 +172,76 @@ int main(void) {
 
             // Move Robby forward.
             case TRANSLATE_FORWARD:
+
+                // User inputs distance.
                 printf("Enter translation distance: ");
+
+                // If input valid, go.
                 if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
                     TranslateForward(fDistance, &fRobotX, &fRobotY,
                                      dRobotAngle);
                     printf("Robby moved to position (%.4f, %.4f).\n", fRobotX,
                             fRobotY);
                     while (getchar() != '\n');        // Clear input buffer.
-                } else {
+                }
+                
+                // If input invalid, error.
+                else {
                     printf("Invalid distance. Please enter a non-negative "
                            "number.\n");
                     while (getchar() != '\n');        // Clear input buffer.
                 }
+
+                // Pause function.
                 printf("Press Enter to continue..."); // Pause before clearing.
                 while (getchar() != '\n');            // Wait for Enter.
+
+                // Leave switch case.
                 break;
 
             // Rotate Robby counterclockwise.
             case ROTATE_COUNTERCLOCKWISE: 
+
+                // User inputs angle.
                 printf("Enter rotation angle: ");
+
+                // If input valid, go.
                 if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
                     RotateCounterClockwise(dTheta, &dRobotAngle);
                     printf("Robby rotated to angle %.4f degrees.\n", 
                             dRobotAngle);
                     while (getchar() != '\n');        // Clear input buffer.
-                } else {
+                } 
+
+                // If input invalid, error.
+                else {
                     printf("Invalid angle. Please enter a non-negative number."
                            "\n");
                     while (getchar() != '\n');        // Clear input buffer.
                 }
+
+                // Pause function.
                 printf("Press Enter to continue..."); // Pause before clearing.
                 while (getchar() != '\n');            // Wait for Enter.
+
+                // Leave switch case
                 break;
 
             // Handle invalid or unexpected command codes.
             default:
+                
+                // Error message.
                 printf("Invalid command code. Please try again.\n");
+
+                // Pause function.
+                printf("Press Enter to continue..."); // Pause before clearing.
+                while (getchar() != '\n');            // Wait for Enter.
+
+                // Leave switch case.
                 break;
         }
 
-        // Clear screen after command to maybe make it more readable.
+        // Clear screen after command to make it more readable.
         printf("\033[H\033[J");
     }
 
