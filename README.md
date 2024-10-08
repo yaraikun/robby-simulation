@@ -51,7 +51,7 @@ The following command codes are available for controlling Robby:
 - `void Quit(void)`: Ends the simulation and displays a closing message.
 
 ## Mathematical Functions
-The project also includes mathematical functions for calculating sine, cosine, and power operations using Taylor series expansions.
+The project also includes mathematical functions for calculating the value of sine, cosine, and power operations using Taylor series expansions.
 
 ### Math Functions
 - `double RaiseTo(double x, int n)`: Computes \(x^n\).
