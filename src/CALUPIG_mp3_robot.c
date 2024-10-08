@@ -33,6 +33,9 @@
 void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
 
      /* fill-up the body of this function */
+    *pfRobotX = 0;
+    *pfRobotY = 0;
+    *pdRobotAngle = 0;
 }
 
 
