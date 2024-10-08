@@ -20,13 +20,18 @@
 #include "mp3_robot.h"
 
 
-int exitProgram = 0; // Global flag to indicate when to exit
+// Global flag simulation loop.
+int exitProgram = 0; 
 
 
 // Pause function to allow user to acknowledge before clearing the screen.
 void pause() {
+
+    // Print Enter to continue prompt.
     printf("Press Enter to continue...");
-    while (getchar() != '\n'); // Wait for Enter
+
+    // Wait for user Enter.
+    while (getchar() != '\n'); 
 }
 
 
@@ -46,67 +51,114 @@ void displayCommands() {
 
 
 // Process translation (forward or backward).
-void processTranslation(char direction, float *pfRobotX, float *pfRobotY, 
+void processTranslation(int direction, float *pfRobotX, float *pfRobotY, 
                         double dRobotAngle) {
+    
+    // fDistance variable declaration.
     float fDistance;
+
+    // Enter distance prompt.
     printf("Enter translation distance: ");
+
+    // If valid; else invalid.
     if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
-        if (direction == 'F') {
+
+        // If forward, else backward.
+        if (direction == 1) {
             TranslateForward(fDistance, pfRobotX, pfRobotY, dRobotAngle);
         } else {
             TranslateBackward(fDistance, pfRobotX, pfRobotY, dRobotAngle);
         }
+
+        // Output Robby change in position.
         printf("Robby moved to position (%.4f, %.4f).\n", *pfRobotX,
                 *pfRobotY); 
     } else {
+
+        // Output error message.
         printf("Invalid distance. Please enter a non-negative number.\n");
     }
-    pause(); 
+
+    // Pause after translation command.
+            while (getchar() != '\n'); 
 }
 
 
 // Process rotation (clockwise or counterclockwise).
-void processRotation(char direction, double *pdRobotAngle) {
+void processRotation(int direction, double *pdRobotAngle) {
+
+    // Angle variable declaration.
     double dTheta;
+
+    // Enter angle prompt.
     printf("Enter rotation angle: ");
+
+    // If valid; else invalid.
     if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
-        if (direction == 'C') {
+
+        // If clockwise; else counterclockwise.
+        if (direction == 1) {
             RotateClockwise(dTheta, pdRobotAngle);
         } else {
             RotateCounterClockwise(dTheta, pdRobotAngle);
         }
-        printf("Robby rotated to angle %.4f degrees.\n", 
-                *pdRobotAngle); 
+
+        // Print Robby's new angle.
+        printf("Robby rotated to angle %.4f degrees.\n", *pdRobotAngle); 
     } else {
+
+        // Print error message.
         printf("Invalid angle. Please enter a non-negative number.\n");
     }
-    pause();
+
+    // Pause after rotation command.
+            while (getchar() != '\n'); 
 }
 
 
 // Get and validate user command input.
 int getUserCommand() {
+
+    // Declare command code. 
     int nCommandCode;
+
+    // Input validation loop.
     while (1) {
+
+        // Display commands.
         displayCommands();
+
+        // If invalid; infinite loop.
         if (scanf("%d", &nCommandCode) != 1 || 
                 nCommandCode < 0 || 
                 nCommandCode > 9) {
             printf("Invalid input. Please enter a valid command code.\n");
-            while (getchar() != '\n'); // Clear input buffer.
-            pause();                   // Call pause function.
-            continue;                  // Loop back.
+
+            // FIRST, clear input buffer.
+            while (getchar() != '\n'); 
+
+            // THEN, pause.
+            pause();                  
+
+            // AND THEN, loop.
+            continue;                
         }
-        while (getchar() != '\n');     // Clear input buffer.
-        return nCommandCode;           // Valid command.
+
+        // Clear input buffer before exiting.
+        while (getchar() != '\n');     
+
+        // Only return valid command.
+        return nCommandCode;          
     }
 }
 
 
-// Handle the command logic based on user input
-void handleCommand(int command, float *pfRobotX, float *pfRobotY, 
+// Handle the command logic based on user input.
+void handleCommand(int nCommandCode, float *pfRobotX, float *pfRobotY, 
                    double *pdRobotAngle) {
-    switch (command) {
+
+    // Common sense switch case for every command.
+    switch (nCommandCode) {
         case DISPLAY_STATUS:
             DisplayStatus(*pfRobotX, *pfRobotY, *pdRobotAngle); 
             break;
@@ -115,16 +167,16 @@ void handleCommand(int command, float *pfRobotX, float *pfRobotY,
             printf("Robot has been reset to initial position and angle.\n");
             break;
         case TRANSLATE_BACKWARD:
-            processTranslation('0', pfRobotX, pfRobotY, *pdRobotAngle);
+            processTranslation(0, pfRobotX, pfRobotY, *pdRobotAngle);
             break;
         case TRANSLATE_FORWARD:
-            processTranslation('F', pfRobotX, pfRobotY, *pdRobotAngle);
+            processTranslation(1, pfRobotX, pfRobotY, *pdRobotAngle);
             break;
         case ROTATE_CLOCKWISE:
-            processRotation('C', pdRobotAngle);
+            processRotation(1, pdRobotAngle);
             break;
         case ROTATE_COUNTERCLOCKWISE:
-            processRotation('0', pdRobotAngle);
+            processRotation(0, pdRobotAngle);
             break;
         case QUIT:
             Quit();
