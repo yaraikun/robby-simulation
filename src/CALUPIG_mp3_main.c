@@ -24,7 +24,7 @@
 int main(void) {
 
     // printf("\033[H\033[J");
-    
+
     // Declared six variables.
     float fRobotX, fRobotY;         // Robby's position (x, y).
     double dRobotAngle;             // Robby's orientation (in degrees).
@@ -49,7 +49,22 @@ int main(void) {
                 "8: Translate Forward\n"
                 "9: Rotate CounterClockwise\n"
                 "Your command, master?: ");
-        scanf("%d", &nCommandCode);
+
+        // Command code input validation.
+        while (1) {
+            if (scanf("%d", &nCommandCode) != 1) {
+                printf("Invalid input. Please enter a valid command code.\n");
+                while (getchar() != '\n'); // Clear input buffer
+                continue;
+            }
+            // Clear input buffer to remove any remaining characters
+            while (getchar() != '\n');
+            if (nCommandCode >= 0 && nCommandCode <= 9) {
+                break; // Valid input; exit the loop
+            } else {
+                printf("Invalid command code. Please try again.\n");
+            }
+        }
 
         // Switch case statement for command code.
         switch(nCommandCode) {
@@ -61,29 +76,51 @@ int main(void) {
                 break;
             case 2:
                 printf("Enter translation distance: ");
-                scanf("%f", &fDistance);
-                TranslateBackward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
+                if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
+                    TranslateBackward(fDistance, &fRobotX, &fRobotY,
+                                      dRobotAngle);
+                } else {
+                    printf("Invalid distance. Please enter a non-negative " 
+                            "number.\n");
+                    while (getchar() != '\n'); // Clear input buffer
+                }
                 break;
             case 3:
                 printf("Enter rotation angle: ");
-                scanf("%lf", &dTheta);
-                RotateClockwise(dTheta, &dRobotAngle);
+                if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
+                    RotateClockwise(dTheta, &dRobotAngle);
+                } else {
+                    printf("Invalid angle. Please enter a non-negative " 
+                            "number.\n");
+                    while (getchar() != '\n'); // Clear input buffer
+                }
                 break;
             case 4:
                 Quit();
                 return 0;
             case 8:
                 printf("Enter translation distance: ");
-                scanf("%f", &fDistance);
-                TranslateForward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
+                if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
+                    TranslateForward(fDistance, &fRobotX, &fRobotY,
+                                     dRobotAngle);
+                } else {
+                    printf("Invalid distance. Please enter a non-negative " 
+                            "number.\n");
+                    while (getchar() != '\n'); // Clear input buffer
+                }
                 break;
             case 9:
                 printf("Enter rotation angle: ");
-                scanf("%lf", &dTheta);
-                RotateCounterClockwise(dTheta, &dRobotAngle);
+                if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
+                    RotateCounterClockwise(dTheta, &dRobotAngle);
+                } else {
+                    printf("Invalid angle. Please enter a non-negative " 
+                            "number.\n");
+                    while (getchar() != '\n'); // Clear input buffer
+                }
                 break;
             default:
-                printf("Invalid command code. Please Try again.\n");
+                printf("Invalid command code. Please try again.\n");
                 break;
         }
     }
