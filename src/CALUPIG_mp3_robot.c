@@ -80,8 +80,8 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY,
      /* fill-up the body of this function */
      /* Note: you will need to call cosine() and sine() in this function. */
     dRobotAngle *= PI / 180;
-    *pfRobotX = fDistance * cosine(dRobotAngle);
-    *pfRobotY = fDistance * sine(dRobotAngle);
+    *pfRobotX += fDistance * cosine(dRobotAngle);
+    *pfRobotY += fDistance * sine(dRobotAngle);
 }
 
  
@@ -110,8 +110,8 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY,
      /* fill-up the body of this function */
      /* Note: you will need to call cosine() and sine() in this function. */
     dRobotAngle *= PI / 180;
-    *pfRobotX = -fDistance * cosine(dRobotAngle);
-    *pfRobotY = -fDistance * sine(dRobotAngle);
+    *pfRobotX -= fDistance * cosine(dRobotAngle);
+    *pfRobotY -= fDistance * sine(dRobotAngle);
 }
 
 
