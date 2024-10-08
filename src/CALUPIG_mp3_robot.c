@@ -108,6 +108,8 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY,
 
      /* fill-up the body of this function */
      /* Note: you will need to call cosine() and sine() in this function. */
+    *pfRobotX = -fDistance * cosine(dRobotAngle);
+    *pfRobotY = -fDistance * sine(dRobotAngle);
 }
 
 
