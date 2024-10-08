@@ -80,7 +80,7 @@ void processTranslation(int direction, float *pfRobotX, float *pfRobotY,
     }
 
     // Pause after translation command.
-            while (getchar() != '\n'); 
+    while (getchar() != '\n'); 
 }
 
 
@@ -112,7 +112,7 @@ void processRotation(int direction, double *pdRobotAngle) {
     }
 
     // Pause after rotation command.
-            while (getchar() != '\n'); 
+    while (getchar() != '\n'); 
 }
 
 
