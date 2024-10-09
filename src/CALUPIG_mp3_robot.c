@@ -49,7 +49,7 @@ void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
 ******************************************************************************/
 void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle) {
 
-    printf("Robby is at point (%.4f, %.4f) with an inclination of %.2lf.\n",
+    printf("Robby is at point (%.4f, %.4f) at an angle of %.2lf.\n",
             fRobotX, fRobotY, dRobotAngle);
 }
 
