@@ -165,7 +165,7 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
 ******************************************************************************/
 void RotateClockwise(double dTheta, double *pdRobotAngle) {
 
-    // Update Robby's inclination.
+    // Update Robby's angle.
     *pdRobotAngle -= dTheta;
 
     // Normalize angle to be within the range of -360 to 360 degrees.
