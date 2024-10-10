@@ -141,8 +141,8 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
     *pdRobotAngle += dTheta;
 
     // Normalize angle to be within the range of -360 to 360 degrees.
-    while (*pdRobotAngle >= 360) *pdRobotAngle -= 360;
-    while (*pdRobotAngle <= -360) *pdRobotAngle += 360;
+    while (*pdRobotAngle > 360) *pdRobotAngle -= 360;
+    while (*pdRobotAngle < -360) *pdRobotAngle += 360;
 }
 
 
@@ -169,8 +169,8 @@ void RotateClockwise(double dTheta, double *pdRobotAngle) {
     *pdRobotAngle -= dTheta;
 
     // Normalize angle to be within the range of -360 to 360 degrees.
-    while (*pdRobotAngle >= 360) *pdRobotAngle -= 360;
-    while (*pdRobotAngle <= -360) *pdRobotAngle += 360;
+    while (*pdRobotAngle > 360) *pdRobotAngle -= 360;
+    while (*pdRobotAngle < -360) *pdRobotAngle += 360;
 }
 
 
