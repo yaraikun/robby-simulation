@@ -25,8 +25,8 @@
   Initialize/Reset Command 
 
   Task:       
-    Initialize/Reset the robot’s position to (0, 0), and its orientation to 
-    0 degree.
+    Initialize/Reset the robot's position to (0, 0), and its orientation to 0
+    degree.
 ******************************************************************************/
 void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle)
 {
@@ -40,8 +40,8 @@ void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle)
 
   Task: 
     Display the robot current state, i.e., its current position and orientation
-    (in degrees). For the robot position, there should be four figits after
-    the decimal point. For the orientation, there should be 2 digits after the
+    (in degrees). For the robot position, there should be four digits after the
+    decimal point. For the orientation, there should be 2 digits after the
     decimal point. Output should always start on a new line.
 ******************************************************************************/
 void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle)
