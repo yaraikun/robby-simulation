@@ -25,88 +25,117 @@
 
 #define NUMBER_OF_TERMS 10
 
+/* 
+ * RaiseTo - Computes the value of x raised to the power of n (x^n).
+ * @x: Base value to be exponentiated.
+ * @n: Exponent (must be a non-negative integer).
+ *
+ * This function calculates the result of x raised to the power of n by 
+ * multiplying x by itself n times. It initializes the result to 1.0 (the
+ * multiplicative identity), and updates the result iteratively.
+ *
+ * Return: The value of x^n.
+ */
+double RaiseTo(double x, int n)
+{
+    double result = 1.0;  // Initialize accumulator to 1.0 for multiplication
 
-// Computes and returns the value of x raised to n. 
-double RaiseTo(double x, int n) {
+    // Loop iterates n times
+    for (int i = 0; i < n; i++)
+        result *= x;  // Multiply accumulator by x for each iteration
 
-    // Initialize the result to 1. (Identity Property of Multiplication)
-    double result = 1.0;
-
-    // Loop from 1 to n.
-    for (int i = 1; i <= n; i++) {
-
-        // Multiply result by x every iteration.
-        result *= x;
-    }
-
-    // Return calculated value of x^n.
-    return result;
+    return result;  // Return computed exponential value
 }
 
+/*
+ * factorial - Computes the value of the factorial of n (n!).
+ * @n: Non-negative integer.
+ *
+ * This function calculates the result of n factorial by multiplying 1.0 by an
+ * integer n from 1 to n. It initializes the result to 1.0 (the multiplicative
+ * identity), and updates the result iteratively.
+ *
+ * Return: The factorial of n.
+ */
+double factorial(int n)
+{
+    double result = 1.0;  // Initialize accumulator to 1.0 for multiplication
 
-// Computes and returns the value of the factorial of n.
-double factorial(int n) {
+    // Iterates from 1 to n
+    for (int i = 1; i <= n; i++)
+        result *= i;  // Multiply accumulator by i for each iteration
 
-    // Initialize value of result. (0! = 1)
-    double result = 1.0;
-
-    // Loop from 1 to n. 
-    for (int i = 1; i <= n; i++) {
-
-        // Multiply result by the integer i.
-        result *= i;
-    }
-
-    // Return calculated of x!.
-    return result;
+    return result;  // Return computed factorial
 }
 
+/* 
+ * cosine - Computes the value of the cosine of angle x (cos x).
+ * @x: Angle in radians.
+ *
+ * This function uses the Taylor series expansion to compute cos(x), limited to
+ * NUMBER_OF_TERMS. It initializes the result to 0.0 (the additive identity)
+ * and iteratively updates it with each term in the series.
+ *
+ * Return: The cosine of x.
+ */
+double cosine(double x)
+{
+    double result = 0.0;  // Initialize accumulator to 0.0 for summation.
 
-// Computes and returns the value o the cosine of angle x.
-// Note that x is in radians.
-double cosine(double x) {
-
-    // Convert angle x from degrees to radians.
-    // x *= PI / 180;
-
-    // Initialize value of cosine result to 0.
-    double result = 0.0;
-
-    // Loop through NUMBER_OF_TERMS to calculate Taylor series for cosine.
+    // Loop iterates NUMBER_OF_TERMS times
     for (int i = 0; i < NUMBER_OF_TERMS; i++) {
-
-        // Calculate current term in the series.
+        /*
+         * Calculates term in Taylor series using the formula:
+         * ((-1)^n / (2n)!) * x^2n
+         *
+         * Which can be rewritten for the purposes of this loop as:
+         * (-1)^i * ((x^2i) / (2i)!)
+         *
+         * Thus, we can calculate the term as:
+         * ((x^2i) / (2i)!)
+         *
+         * And the sign of the term changes accordingly when i is even or odd:
+         * (-1)^i
+         */
         double term = RaiseTo(x, 2 * i) / factorial(2 * i);
-
-        // Add or subtract term if even or odd.
         result += (i % 2 == 0 ? term : -term);
     }
 
-    // Return calculated result of cos(x).
-    return result;
+    return result;  // Returns result calculated approximation
 }
 
+/*
+ * sine - Computes the value of the sine of angle x
+ * @x: Angle in radians.
+ *
+ * This function uses the Taylor series expansion to compute cos(x), limited to
+ * NUMBER_OF_TERMS. It initializes the result to 0.0 (the additive identity)
+ * and iteratively updates it with each term in the series.
+ *
+ * Return: The sine of x.
+ */
+double sine(double x)
+{
+    double result = 0.0;  // Initialize accumulator to 0.0 for summation.
 
-// Computes and returns the value o the sine of angle c.
-// Note that x is in radians.
-double sine(double x) {
-
-    // Convert angle x from degrees to radians.
-    // x *= PI / 180;
-
-    // Initialize value of sine result to 0.
-    double result = 0.0;
-
-    // Loop through NUMBER_OF_TERMS to calculate Taylor Series for sine.
+    // Loop iterates NUMBER_OF_TERMS times
     for (int i = 0; i < NUMBER_OF_TERMS; i++) {
-
-        // Calculate current term in the series.
+        /*
+         * Calculates term in Taylor series using the formula:
+         * ((-1)^n / (2n)!) * x^2n
+         *
+         * Which can be rewritten for the purposes of this loop as:
+         * (-1)^i * ((x^2i + 1) / (2i + 1)!)
+         *
+         * Thus, we can calculate the term as:
+         * ((x^2i + 1) / (2i + 1)!)
+         *
+         * And the sign of the term changes accordingly when i is even or odd:
+         * (-1)^i
+         */
         double term = RaiseTo(x, 2 * i + 1) / factorial(2 * i + 1);
-
-        // Add or subtract term if even or odd.
         result += (i % 2 == 0 ? term : -term);
     }
 
-    // Return calculated result of sin(x).
-    return result;
+    return result;  // Returns result calculated approximation
 }
