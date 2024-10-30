@@ -41,11 +41,10 @@ void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
   Display Status Command 
 
   Task: 
-    Display the robot current state, i.e., its current position 
-    and orientation (in degrees).  For the robot position, there should be 
-    four digits after the decimal point.  For the orientation, there should
-    be 2 digits after the decimal point.  Output should always start on a
-    new line.
+    Display the robot current state, i.e., its current position and orientation
+    (in degrees). For the robot position, there should be four figits after
+    the decimal point. For the orientation, there should be 2 digits after the
+    decimal point. Output should always start on a new line.
 ******************************************************************************/
 void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle) {
 
