@@ -21,7 +21,6 @@
 #include "mp2_math.h"
 #include "mp3_robot.h"
 
-
 /******************************************************************************
   Initialize/Reset Command 
 
@@ -29,13 +28,12 @@
     Initialize/Reset the robot’s position to (0, 0), and its orientation to 
     0 degree.
 ******************************************************************************/
-void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
-
+void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle)
+{
     *pfRobotX = 0;
     *pfRobotY = 0;
     *pdRobotAngle = 0;
 }
-
 
 /****************************************************************************** 
   Display Status Command 
@@ -46,12 +44,11 @@ void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle) {
     the decimal point. For the orientation, there should be 2 digits after the
     decimal point. Output should always start on a new line.
 ******************************************************************************/
-void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle) {
-
+void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle)
+{
     printf("\nRobby is at point (%.4f, %.4f) at an angle of %.2lf.\n",
             fRobotX, fRobotY, dRobotAngle);
 }
-
 
 /****************************************************************************** 
   Forward Translation Command
@@ -71,8 +68,8 @@ void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle) {
     Compute the robot’s new coordinates.
 ******************************************************************************/
 void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, 
-                      double dRobotAngle) {
-
+                      double dRobotAngle)
+{
     // Convert angle to radians.
     dRobotAngle *= PI / 180;
 
@@ -82,12 +79,10 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY,
     // Update Robby's y-coordinate.
     *pfRobotY += fDistance * sine(dRobotAngle);
 }
-
  
 /****************************************************************************** 
   Backward Translation Command 
  
-
   Pre-Condition:
     a. fDistance contains the translation distance
     b. *pfRobotX is the robot's current x-coordinate (before translation)
@@ -104,8 +99,8 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY,
 
 ******************************************************************************/
 void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY, 
-                       double dRobotAngle) {
-
+                       double dRobotAngle)
+{
     // Convert angle to radians.
     dRobotAngle *= PI / 180;
 
@@ -116,26 +111,25 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY,
     *pfRobotY -= fDistance * sine(dRobotAngle);
 }
 
-
 /******************************************************************************
   Counterclockwise Rotation Command
 
   Pre-Condition:
-     a. dTheta is the angle of rotation
-     b. *pdRobotAngle is the robot's current orientation (before rotation)
+    a. dTheta is the angle of rotation
+    b. *pdRobotAngle is the robot's current orientation (before rotation)
 
-   Post-Condition:
-     a. *pdRobotAngle is the robot's new orientation (after rotation)
+  Post-Condition:
+    a. *pdRobotAngle is the robot's new orientation (after rotation)
 
-   Task:
-     Rotate the robot counterclockwise by an angle equivalent to dTheta.
-     Compute the robot’s new orientation.
+  Task:
+    Rotate the robot counterclockwise by an angle equivalent to dTheta.
+    Compute the robot's new orientation.
 
-     VERY IMPORTANT NOTE!!!  Make sure that you keep the value of
-     *pdRobotAngle within the range  -360.0 to 360.0 degrees.
+    VERY IMPORTANT NOTE!!! Make sure that you keep the value of
+    *pdRobotAngle within the range -360.0 to 360.0 degrees.
 ******************************************************************************/
-void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
-
+void RotateCounterClockwise(double dTheta, double *pdRobotAngle)
+{
     // Update Robby's inclination.
     *pdRobotAngle += dTheta;
 
@@ -143,7 +137,6 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
     while (*pdRobotAngle > 360) *pdRobotAngle -= 360;
     while (*pdRobotAngle < -360) *pdRobotAngle += 360;
 }
-
 
 /******************************************************************************
   Clockwise Rotation Command
@@ -162,8 +155,8 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle) {
      VERY IMPORTANT NOTE!!!  Make sure that you keep the value of
      *pdRobotAngle within the range  -360 to 360 degrees.
 ******************************************************************************/
-void RotateClockwise(double dTheta, double *pdRobotAngle) {
-
+void RotateClockwise(double dTheta, double *pdRobotAngle)
+{
     // Update Robby's angle.
     *pdRobotAngle -= dTheta;
 
@@ -172,7 +165,6 @@ void RotateClockwise(double dTheta, double *pdRobotAngle) {
     while (*pdRobotAngle < -360) *pdRobotAngle += 360;
 }
 
-
 /******************************************************************************
   Quit Simulation Command
 
@@ -180,10 +172,9 @@ void RotateClockwise(double dTheta, double *pdRobotAngle) {
     Simply display a message "END SIMULATION" (this should be the exact
     string).
 ******************************************************************************/
-void Quit(void) {
-
+void Quit(void)
+{
     printf("END SIMULATION\n");
 }
-
 
 /**************************** END OF THIS FILE *******************************/
