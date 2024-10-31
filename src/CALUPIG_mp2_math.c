@@ -36,11 +36,6 @@ double RaiseTo(double x, int n)
 {
         double result = 1.0;
 
-        if (n < 0) {
-                x = 1.0 / x;
-                n = -n;
-        }
-
         for (int i = 0; i < n; i++)
                 result *= x;
 
@@ -59,9 +54,6 @@ double factorial(int n)
 
         for (int i = 1; i <= n; i++)
                 result *= i;
-
-        if (n < 0)
-                result = 0.0;
 
         return result;
 }
