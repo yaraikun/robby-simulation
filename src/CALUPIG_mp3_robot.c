@@ -28,14 +28,15 @@
     Initialize/Reset the robot's position to (0, 0), and its orientation to 0
     degree.
 ******************************************************************************/
+
 /**
  * InitializeReset - Initialize/Reset the robot's position and orientation
  * @pfRobotX: Pointer to the robot's X coordinate
  * @pfRobotY: Pointer to the robot's Y coordinate
  * @pdRobotAngle: Pointer to the robot's orientation
  *
- * This function initializes the robot's position to (0, 0) and its
- * orientation to 0 degrees.
+ * This function initializes the robot's position to (0, 0) and its orientation
+ * to 0 degrees.
  */
 void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle)
 {
