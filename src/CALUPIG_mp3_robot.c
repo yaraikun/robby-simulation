@@ -28,16 +28,6 @@
     Initialize/Reset the robot's position to (0, 0), and its orientation to 0
     degree.
 ******************************************************************************/
-
-/**
- * InitializeReset - Initialize/Reset the robot's position and orientation
- * @pfRobotX: Pointer to the robot's X coordinate
- * @pfRobotY: Pointer to the robot's Y coordinate
- * @pdRobotAngle: Pointer to the robot's orientation
- *
- * This function initializes the robot's position to (0, 0) and its orientation
- * to 0 degrees.
- */
 void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle)
 {
         *pfRobotX = 0.0f;
@@ -161,7 +151,7 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle)
 
   Task:
     Rotate the robot clockwise by an angle equivalent to dTheta.
-    Compute the robot’s new orientation.
+    Compute the robot's new orientation.
   
   VERY IMPORTANT NOTE!!!  Make sure that you keep the value of
   *pdRobotAngle within the range  -360 to 360 degrees.
