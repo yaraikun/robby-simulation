@@ -151,6 +151,9 @@ int getUserCommand()
                         // THEN, pause.
                         pause();                  
 
+                        // Then clear screen.
+                        printf("\033[H\033[J");
+
                         // AND THEN, loop.
                         continue;                
                 }
