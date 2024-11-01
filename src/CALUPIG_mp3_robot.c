@@ -74,10 +74,8 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY,
         // Convert angle to radians.
         dRobotAngle *= PI / 180.0;
 
-        // Update Robby's x-coordinate.
+        // Update Robby's x and y coordinates.
         *pfRobotX += fDistance * cosine(dRobotAngle);
-
-        // Update Robby's y-coordinate.
         *pfRobotY += fDistance * sine(dRobotAngle);
 }
 
@@ -105,10 +103,8 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY,
         // Convert angle to radians.
         dRobotAngle *= PI / 180;
 
-        // Update Robby's x-coordinate.
+        // Update Robby's x and y coordinates.
         *pfRobotX -= fDistance * cosine(dRobotAngle);
-
-        // Update Robby's y-coordinate.
         *pfRobotY -= fDistance * sine(dRobotAngle);
 }
 
@@ -126,8 +122,8 @@ void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY,
     Rotate the robot counterclockwise by an angle equivalent to dTheta.
     Compute the robot's new orientation.
 
-  VERY IMPORTANT NOTE!!! Make sure that you keep the value of
-  *pdRobotAngle within the range -360.0 to 360.0 degrees.
+  VERY IMPORTANT NOTE!!! Make sure that you keep the value of *pdRobotAngle
+  within the range -360.0 to 360.0 degrees.
 ******************************************************************************/
 void RotateCounterClockwise(double dTheta, double *pdRobotAngle)
 {
@@ -153,8 +149,8 @@ void RotateCounterClockwise(double dTheta, double *pdRobotAngle)
     Rotate the robot clockwise by an angle equivalent to dTheta.
     Compute the robot's new orientation.
   
-  VERY IMPORTANT NOTE!!!  Make sure that you keep the value of
-  *pdRobotAngle within the range  -360 to 360 degrees.
+  VERY IMPORTANT NOTE!!!  Make sure that you keep the value of *pdRobotAngle
+  within the range  -360 to 360 degrees.
 ******************************************************************************/
 void RotateClockwise(double dTheta, double *pdRobotAngle)
 {
