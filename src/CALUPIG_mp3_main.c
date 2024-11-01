@@ -19,21 +19,28 @@
 #include <stdio.h>
 #include "mp3_robot.h"
 
-int main(void) {
-    float fRobotX, fRobotY; // Robot's position
-    double dRobotAngle;     // Robot's orientation
-    int quit = 0; 
+int main(void)
+{
+    float fRobotX, fRobotY;  // Robby coordinates.
+    double dRobotAngle;      // Robby orientation.
 
     // Initialize Robby.
     InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
 
     // Simulation loop.
+    int quit = 0;
     while (!quit) { 
-        printf("\033[H\033[J"); // Clear terminal
+        // Clear screen first every iteration.
+        printf("\033[H\033[J");
+
+        // User command.
         int nCommandCode;
 
-        // Input validation loop for user commands.
-        while (1) {
+        // Loop for handling user commands.
+        int valid = 0;
+        while (!valid)
+        {
+            // Display command codes.
             printf("Command Codes:\n"
                    "0: Display Status\n"
                    "1: Reset\n"
@@ -44,19 +51,32 @@ int main(void) {
                    "9: Rotate CounterClockwise\n"
                    "Your command, master?: ");
 
+            // Input validation.
             if (scanf("%d", &nCommandCode) != 1 || 
-                nCommandCode < 0 || nCommandCode > 9) {
+                    nCommandCode < 0 ||
+                    nCommandCode > 9) {
                 printf("Invalid input. Please enter a valid command code.\n");
-                while (getchar() != '\n'); // Clear input buffer
+
+                // FIRST clear input buffer.
+                while (getchar() != '\n');
+
+                // Then prompt pause.
                 printf("Press Enter to continue...");
-                while (getchar() != '\n'); // Wait for Enter
-                printf("\033[H\033[J"); // Clear terminal
-                continue;
+                while (getchar() != '\n');
+
+                // Clear terminal before looping again.
+                printf("\033[H\033[J");
+            } else {
+                // Clear input buffer after inputting valid code.
+                while (getchar() != '\n');
+
+                // Break out of validation loop.
+                valid = 1;
             }
-            while (getchar() != '\n'); // Clear input buffer before proceeding
-            break; // Break out of the input loop
+
         }
 
+        // Handle command code
         switch (nCommandCode) {
             case DISPLAY_STATUS:
                 DisplayStatus(fRobotX, fRobotY, dRobotAngle); 
@@ -71,11 +91,14 @@ int main(void) {
                 printf("Enter translation distance: ");
                 if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
                     if (nCommandCode == TRANSLATE_FORWARD) {
-                        TranslateForward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
+                        TranslateForward(fDistance, &fRobotX, &fRobotY,
+                                         dRobotAngle);
                     } else {
-                        TranslateBackward(fDistance, &fRobotX, &fRobotY, dRobotAngle);
+                        TranslateBackward(fDistance, &fRobotX, &fRobotY,
+                                          dRobotAngle);
                     }
-                    printf("Robby moved to position (%.4f, %.4f).\n", fRobotX, fRobotY); 
+                    printf("Robby moved to position (%.4f, %.4f).\n",
+                            fRobotX, fRobotY); 
                 } else {
                     printf("Invalid distance. Please enter a non-negative number.\n");
                 }
@@ -110,7 +133,7 @@ int main(void) {
 
         // Pause after every command.
         printf("Press Enter to continue...");
-        while (getchar() != '\n'); // Wait for Enter
+        while (getchar() != '\n');
     }
 
     // Program ran successfully.
