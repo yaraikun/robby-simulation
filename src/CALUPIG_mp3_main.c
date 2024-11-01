@@ -19,199 +19,225 @@
 #include <stdio.h>
 #include "mp3_robot.h"
 
-// Global flag simulation loop.
-int exitProgram = 0; 
+int quit = 0; 
 
-// Pause function to allow user to acknowledge before clearing the screen.
+/**
+ * pause - Pause screen and prompts user to press enter to continue.
+ */
 void pause()
 {
-    // Print Enter to continue prompt.
-    printf("Press Enter to continue...");
+        // Print Enter to continue prompt.
+        printf("Press Enter to continue...");
 
-    // Wait for user Enter.
-    while (getchar() != '\n'); 
+        // Wait for user Enter.
+        while (getchar() != '\n'); 
 }
 
-// Display available commands.
+/*
+ * displayCommands - Displays available command codes.
+ */
 void displayCommands() 
 {
-    printf("\033[H\033[J"
-           "Command Codes:\n"
-           "0: Display Status\n"
-           "1: Reset\n"
-           "2: Translate Backward\n"
-           "3: Rotate Clockwise\n"
-           "4: Quit\n"
-           "8: Translate Forward\n"
-           "9: Rotate CounterClockwise\n"
-           "Your command, master?: ");
+        printf("Command Codes:\n"
+               "0: Display Status\n"
+               "1: Reset\n"
+               "2: Translate Backward\n"
+               "3: Rotate Clockwise\n"
+               "4: Quit\n"
+               "8: Translate Forward\n"
+               "9: Rotate CounterClockwise\n"
+               "Your command, master?: ");
 }
 
-
-// Process translation (forward or backward).
+/*
+ * processTranslation - Processes translate commands.
+ * @direction: Translation direction (forwards or backwards).
+ * @pfRobotX: Pointer to robot's current x-coordinate.
+ * @pfRobotY: Pointer to robot's current y-coordinate.
+ * @dRobotAngle: Robot's current orientation.
+ *
+ * Calls translate forward / translate backward functions.
+ */
 void processTranslation(int direction, float *pfRobotX, float *pfRobotY, 
                         double dRobotAngle)
 {
-    // fDistance variable declaration.
-    float fDistance;
+        // fDistance variable declaration.
+        float fDistance;
 
-    // Enter distance prompt.
-    printf("Enter translation distance: ");
+        // Enter distance prompt.
+        printf("Enter translation distance: ");
 
-    // If valid; else invalid.
-    if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
+        // If valid; else invalid.
+        if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
 
-        // If forward, else backward.
-        if (direction == 1) {
-            TranslateForward(fDistance, pfRobotX, pfRobotY, dRobotAngle);
+                // If forward, else backward.
+                if (direction == 1)
+                        TranslateForward(fDistance, pfRobotX, pfRobotY,
+                                         dRobotAngle);
+                else
+                        TranslateBackward(fDistance, pfRobotX, pfRobotY,
+                                          dRobotAngle);
+
+                // Output Robby change in position.
+                printf("Robby moved to position (%.4f, %.4f).\n",
+                        *pfRobotX, *pfRobotY); 
         } else {
-            TranslateBackward(fDistance, pfRobotX, pfRobotY, dRobotAngle);
+                // Output error message.
+                printf("Invalid distance. Please enter a non-negative number.\n");
         }
 
-        // Output Robby change in position.
-        printf("Robby moved to position (%.4f, %.4f).\n", *pfRobotX,
-                *pfRobotY); 
-    } else {
-
-        // Output error message.
-        printf("Invalid distance. Please enter a non-negative number.\n");
-    }
-
-    // Pause after translation command.
-    while (getchar() != '\n'); 
+        // Pause after translation command.
+        while (getchar() != '\n'); 
 }
 
-// Process rotation (clockwise or counterclockwise).
+/*
+ * processRotation - Processes rotate commands.
+ * @direction: Translation direction (clockwise or counterclockwise).
+ * @pdRobotAngle: Pointer to robot's current orientation.
+ *
+ * Calls translate forward / translate backward functions.
+ */
 void processRotation(int direction, double *pdRobotAngle)
 {
-    // Angle variable declaration.
-    double dTheta;
+        // Angle variable declaration.
+        double dTheta;
 
-    // Enter angle prompt.
-    printf("Enter rotation angle: ");
+        // Enter angle prompt.
+        printf("Enter rotation angle: ");
 
-    // If valid; else invalid.
-    if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
+        // If valid; else invalid.
+        if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
+                // If clockwise; else counterclockwise.
+                if (direction == 1) {
+                        RotateClockwise(dTheta, pdRobotAngle);
+                } else {
+                        RotateCounterClockwise(dTheta, pdRobotAngle);
+                }
 
-        // If clockwise; else counterclockwise.
-        if (direction == 1) {
-            RotateClockwise(dTheta, pdRobotAngle);
+                // Print Robby's new angle.
+                printf("Robby rotated to angle %.4f degrees.\n",
+                        *pdRobotAngle); 
         } else {
-            RotateCounterClockwise(dTheta, pdRobotAngle);
+                // Print error message.
+                printf("Invalid angle. Please enter a non-negative number.\n");
         }
 
-        // Print Robby's new angle.
-        printf("Robby rotated to angle %.4f degrees.\n", *pdRobotAngle); 
-    } else {
-
-        // Print error message.
-        printf("Invalid angle. Please enter a non-negative number.\n");
-    }
-
-    // Pause after rotation command.
-    while (getchar() != '\n'); 
+        // Clear input buffer to make pause work.
+        while (getchar() != '\n'); 
 }
 
-// Get and validate user command input.
+/*
+ * getUserCommand - Validates user command code.
+ */
 int getUserCommand()
 {
-    // Declare command code. 
-    int nCommandCode;
+        // Declare command code. 
+        int nCommandCode;
 
-    // Input validation loop.
-    while (1) {
+        // Input validation loop.
+        while (1) {
+                // Display commands.
+                displayCommands();
 
-        // Display commands.
-        displayCommands();
+                // If invalid; infinite loop.
+                if (scanf("%d", &nCommandCode) != 1 || 
+                                nCommandCode < 0 || 
+                                nCommandCode > 9) {
+                        printf("Invalid input. Please enter a valid command code.\n");
 
-        // If invalid; infinite loop.
-        if (scanf("%d", &nCommandCode) != 1 || 
-                nCommandCode < 0 || 
-                nCommandCode > 9) {
-            printf("Invalid input. Please enter a valid command code.\n");
+                        // FIRST, clear input buffer.
+                        while (getchar() != '\n'); 
 
-            // FIRST, clear input buffer.
-            while (getchar() != '\n'); 
+                        // THEN, pause.
+                        pause();                  
 
-            // THEN, pause.
-            pause();                  
+                        // AND THEN, loop.
+                        continue;                
+                }
 
-            // AND THEN, loop.
-            continue;                
+                // Clear input buffer before exiting again.
+                while (getchar() != '\n');     
+
+                // Only return valid command.
+                return nCommandCode;          
         }
-
-        // Clear input buffer before exiting.
-        while (getchar() != '\n');     
-
-        // Only return valid command.
-        return nCommandCode;          
-    }
 }
 
-// Handle the command logic based on user input.
+/*
+ * handleCommand - Handles user command code.
+ * @nCommandCode - User input command code.
+ * @pfRobotX - Pointer to robot's current x-coordinate.
+ * @pfRobotY - Pointer to robot's current y-coordinate.
+ * @pdRobotAngle - Pointer to robot's current orientation.
+ *
+ * Calls corresponding "handle" command functions based on user input.
+ */
 void handleCommand(int nCommandCode, float *pfRobotX, float *pfRobotY, 
                    double *pdRobotAngle)
 {
-    // Common sense switch case for every command.
-    switch (nCommandCode) {
-        case DISPLAY_STATUS:
-            DisplayStatus(*pfRobotX, *pfRobotY, *pdRobotAngle); 
-            break;
-        case RESET:
-            InitializeReset(pfRobotX, pfRobotY, pdRobotAngle); 
-            printf("Robot has been reset to initial position and angle.\n");
-            break;
-        case TRANSLATE_BACKWARD:
-            processTranslation(0, pfRobotX, pfRobotY, *pdRobotAngle);
-            break;
-        case TRANSLATE_FORWARD:
-            processTranslation(1, pfRobotX, pfRobotY, *pdRobotAngle);
-            break;
-        case ROTATE_CLOCKWISE:
-            processRotation(1, pdRobotAngle);
-            break;
-        case ROTATE_COUNTERCLOCKWISE:
-            processRotation(0, pdRobotAngle);
-            break;
-        case QUIT:
-            Quit();
-            exitProgram = 1;
-            break;
-        default:
-            printf("Invalid command code. Please try again.\n");
-            break;
-    }
+        switch (nCommandCode) {
+                case DISPLAY_STATUS:
+                        DisplayStatus(*pfRobotX, *pfRobotY, *pdRobotAngle); 
+                        break;
+                case RESET:
+                        InitializeReset(pfRobotX, pfRobotY, pdRobotAngle); 
+                        printf("Robot has been reset to initial position and angle.\n");
+                        break;
+                case TRANSLATE_BACKWARD:
+                        processTranslation(0, pfRobotX, pfRobotY,
+                                           *pdRobotAngle);
+                        break;
+                case TRANSLATE_FORWARD:
+                        processTranslation(1, pfRobotX, pfRobotY,
+                                           *pdRobotAngle);
+                        break;
+                case ROTATE_CLOCKWISE:
+                        processRotation(1, pdRobotAngle);
+                        break;
+                case ROTATE_COUNTERCLOCKWISE:
+                        processRotation(0, pdRobotAngle);
+                        break;
+                case QUIT:
+                        Quit();
+                        quit = 1;
+                        break;
+                default:
+                        printf("Invalid command code. Please try again.\n");
+                        break;
+        }
 
-    // Pause after every command.
-    pause();
+        // Pause after every command.
+        pause();
 }
 
-// Main function
+/*
+ * main - Contains main simulation loop.
+ */
 int main(void)
 {
-    // Clear console on program start.
-    printf("\033[H\033[J"); 
+        // Declare input variables.
+        float fRobotX, fRobotY; // Robot's position
+        double dRobotAngle;     // Robot's orientation
 
-    // Declare input variables.
-    float fRobotX, fRobotY; // Robot's position
-    double dRobotAngle;     // Robot's orientation
+        // Initialize Robby.
+        InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
 
-    // Initialize Robby.
-    InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
+        // Simulation loop.
+        while (!quit) { 
+                // Clear terminal at start of each iteration.
+                printf("\033[H\033[J");
 
-    // Simulation loop.
-    while (!exitProgram) { 
+                /*// Makes testing easier. REMOVE ?*/
+                /*DisplayStatus(fRobotX, fRobotY, dRobotAngle); */
+                /*printf("\n");*/
 
-        // Get user command.
-        int nCommandCode = getUserCommand(); 
+                // Get user command.
+                int nCommandCode = getUserCommand(); 
 
-        // Handle user command.
-        handleCommand(nCommandCode, &fRobotX, &fRobotY, &dRobotAngle);
+                // Handle user command.
+                handleCommand(nCommandCode, &fRobotX, &fRobotY, &dRobotAngle);
+        }
 
-        // Clear terminal after handling command.
-        printf("\033[H\033[J");
-    }
-
-    // Program ran succesfully.
-    return 0; 
+        // Program ran succesfully.
+        return 0; 
 }
