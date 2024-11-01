@@ -1,6 +1,6 @@
 /* CCPROG1 Machine Problem Part 3                                            */
-/* LASTNAME_FIRSTNAME  (change this to your own name)                        */
-/* SECTION (change this to your own section)                                 */
+/* CALUPIG_EVAN RILEY L.                                                     */
+/* S24B                                                                      */
 /*                                                                           */
 /* This file contains the implementation of the  mp3_robot functions         */
 /*                                                                           */
