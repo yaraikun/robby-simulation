@@ -58,7 +58,7 @@ int main(void)
                    "Your command, master?: ");
 
             // Input validation.
-            if (scanf("%d", &nCommandCode) != 1 || 
+            if (scanf("%d", &nCommandCode) != 1 ||
                     nCommandCode < 0 ||
                     nCommandCode > 9) {
                 printf("Invalid input. Please enter a valid command code.\n");
