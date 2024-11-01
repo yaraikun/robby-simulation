@@ -227,10 +227,6 @@ int main(void)
                 // Clear terminal at start of each iteration.
                 printf("\033[H\033[J");
 
-                /*// Makes testing easier. REMOVE ?*/
-                /*DisplayStatus(fRobotX, fRobotY, dRobotAngle); */
-                /*printf("\n");*/
-
                 // Get user command.
                 int nCommandCode = getUserCommand(); 
 
