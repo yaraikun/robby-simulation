@@ -33,7 +33,7 @@ void pause()
         while (getchar() != '\n'); 
 }
 
-/*
+/**
  * displayCommands - Displays available command codes.
  */
 void displayCommands() 
@@ -49,7 +49,7 @@ void displayCommands()
                "Your command, master?: ");
 }
 
-/*
+/**
  * processTranslation - Processes translate commands.
  * @direction: Translation direction (forwards or backwards).
  * @pfRobotX: Pointer to robot's current x-coordinate.
@@ -90,7 +90,7 @@ void processTranslation(int direction, float *pfRobotX, float *pfRobotY,
         while (getchar() != '\n'); 
 }
 
-/*
+/**
  * processRotation - Processes rotate commands.
  * @direction: Translation direction (clockwise or counterclockwise).
  * @pdRobotAngle: Pointer to robot's current orientation.
@@ -126,7 +126,7 @@ void processRotation(int direction, double *pdRobotAngle)
         while (getchar() != '\n'); 
 }
 
-/*
+/**
  * getUserCommand - Validates user command code.
  */
 int getUserCommand()
@@ -163,7 +163,7 @@ int getUserCommand()
         }
 }
 
-/*
+/**
  * handleCommand - Handles user command code.
  * @nCommandCode - User input command code.
  * @pfRobotX - Pointer to robot's current x-coordinate.
@@ -210,7 +210,7 @@ void handleCommand(int nCommandCode, float *pfRobotX, float *pfRobotY,
         pause();
 }
 
-/*
+/**
  * main - Contains main simulation loop.
  */
 int main(void)
