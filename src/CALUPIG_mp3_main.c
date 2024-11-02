@@ -58,8 +58,8 @@ int main(void)
 
             // Input validation.
             if (scanf("%d", &nCommandCode) != 1 ||
-                    nCommandCode < 0 ||
-                    nCommandCode > 9) {
+                nCommandCode < 0 ||
+                nCommandCode > 9) {
                 printf("Invalid input. Please enter a valid command code.\n");
 
                 // FIRST clear input buffer.
@@ -70,7 +70,7 @@ int main(void)
                 while (getchar() != '\n');
 
             } else {
-                // Clear input buffer after inputting valid code.
+                // Clear input buffer before moving on.
                 while (getchar() != '\n');
 
                 // Break out of validation loop.
@@ -108,7 +108,7 @@ int main(void)
                 printf("Enter translation distance: ");
                 if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
                     TranslateForward(fDistance, &fRobotX, &fRobotY,
-                            dRobotAngle);
+                                     dRobotAngle);
                     printf("Robby moved to position (%.4f, %.4f).\n",
                             fRobotX, fRobotY); 
                 } else {
@@ -130,7 +130,7 @@ int main(void)
             case ROTATE_COUNTERCLOCKWISE: 
                 printf("Enter rotation angle: ");
                 if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
-                    RotateClockwise(dTheta, &dRobotAngle);
+                    RotateCounterClockwise(dTheta, &dRobotAngle);
                     printf("Robby rotated to angle %.4f degrees.\n",
                             dRobotAngle); 
                 } else {
