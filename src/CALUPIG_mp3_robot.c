@@ -69,7 +69,7 @@ void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle)
     Compute the robot's new coordinates.
 ******************************************************************************/
 void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, 
-                double dRobotAngle)
+                      double dRobotAngle)
 {
     // Convert angle to radians.
     dRobotAngle *= PI / 180.0;
@@ -98,7 +98,7 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY,
 
 ******************************************************************************/
 void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY, 
-                double dRobotAngle)
+                       double dRobotAngle)
 {
     // Convert angle to radians.
     dRobotAngle *= PI / 180;
