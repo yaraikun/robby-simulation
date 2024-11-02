@@ -88,27 +88,15 @@ int main(void)
                 printf("Robot has been reset to initial position and angle.\n");
                 break;
             case TRANSLATE_BACKWARD:
-                printf("Enter translation distance: ");
-
-                // Input validation.
-                if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
-                    TranslateBackward(fDistance, &fRobotX, &fRobotY,
-                                      dRobotAngle);
-                    printf("Robby moved to position (%.4f, %.4f).\n",
-                            fRobotX, fRobotY); 
-                } else {
-                    printf("Invalid distance. Please enter a non-negative number.\n");
-                }
-
-                // Clear input buffer for pause to work.
-                while (getchar() != '\n');
-
-                break;
             case TRANSLATE_FORWARD: 
                 printf("Enter translation distance: ");
                 if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
-                    TranslateForward(fDistance, &fRobotX, &fRobotY,
-                                     dRobotAngle);
+                    if (nCommandCode == TRANSLATE_BACKWARD)
+                        TranslateBackward(fDistance, &fRobotX, &fRobotY,
+                                          dRobotAngle);
+                    else
+                        TranslateForward(fDistance, &fRobotX, &fRobotY,
+                                         dRobotAngle);
                     printf("Robby moved to position (%.4f, %.4f).\n",
                             fRobotX, fRobotY); 
                 } else {
@@ -117,20 +105,13 @@ int main(void)
                 while (getchar() != '\n');
                 break;
             case ROTATE_CLOCKWISE:
-                printf("Enter rotation angle: ");
-                if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
-                    RotateClockwise(dTheta, &dRobotAngle);
-                    printf("Robby rotated to angle %.4f degrees.\n",
-                            dRobotAngle); 
-                } else {
-                    printf("Invalid angle. Please enter a non-negative number.\n");
-                }
-                while (getchar() != '\n');
-                break;
             case ROTATE_COUNTERCLOCKWISE: 
                 printf("Enter rotation angle: ");
                 if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
-                    RotateCounterClockwise(dTheta, &dRobotAngle);
+                    if (nCommandCode == ROTATE_CLOCKWISE)
+                        RotateClockwise(dTheta, &dRobotAngle);
+                    else
+                        RotateCounterClockwise(dTheta, &dRobotAngle);
                     printf("Robby rotated to angle %.4f degrees.\n",
                             dRobotAngle); 
                 } else {
