@@ -71,7 +71,7 @@ void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle)
 void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, 
                       double dRobotAngle)
 {
-    // Normalize the angle to the range of -180 to 180 degrees
+    // Normalize for more accurate results.
     while (dRobotAngle > 180) dRobotAngle -= 360;
     while (dRobotAngle < -180) dRobotAngle += 360;
 
@@ -104,7 +104,7 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY,
 void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY, 
                        double dRobotAngle)
 {
-    // Normalize the angle to the range of -180 to 180 degrees
+    // Normalize for more accurate results.
     while (dRobotAngle > 180) dRobotAngle -= 360;
     while (dRobotAngle < -180) dRobotAngle += 360;
 
