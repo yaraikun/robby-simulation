@@ -21,23 +21,23 @@
 
 int main(void)
 {
-        float fRobotX, fRobotY;  // Robby coordinates.
-        double dRobotAngle;      // Robby orientation.
+        float fRobotX, fRobotY;  /* Robby coordinates */
+        double dRobotAngle;      /* Robby orientation */
 
-        float fDistance;         // Translate distance.
-        double dTheta;           // Angle to add.
+        float fDistance;         /* Translate distance */
+        double dTheta;           /* Angle to add */
 
-        int nCommandCode;        // User command.
+        int nCommandCode;        /* User command */
 
-        // Initialize Robby.
+        /* Initialize Robby */
         InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
 
-        // Simulation loop.
+        /* Simulation loop */
         while (1) { 
-                // Clear screen at start of every iteration.
+                /* Clear screen at start of every iteration */
                 printf("\033[H\033[J");
 
-                // Display command codes.
+                /* Display command codes */
                 printf("Command Codes:\n"
                        "0: Display Status\n"
                        "1: Reset\n"
@@ -48,14 +48,14 @@ int main(void)
                        "9: Rotate CounterClockwise\n"
                        "Your command, master?: ");
 
-                // Input validation.
+                /* Input validation */
                 if(scanf("%d", &nCommandCode) != 1)
                         nCommandCode = -1;
 
-                // Clear input buffer before moving on.
+                /* Clear input buffer before moving on */
                 while (getchar() != '\n');
 
-                // Handle command code
+                /* Handle command cod */
                 switch (nCommandCode) {
                         case DISPLAY_STATUS:
                                 DisplayStatus(fRobotX, fRobotY, dRobotAngle); 
@@ -127,7 +127,7 @@ int main(void)
                                 break;
                 }
 
-                // Pause after every handling command.
+                /* Pause after every handling command */
                 printf("Press Enter to continue...");
                 while (getchar() != '\n');
         }
