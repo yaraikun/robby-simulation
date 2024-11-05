@@ -1,3 +1,9 @@
 build/*
 !build/.gitkeep
+
+docs/latex/*
+!docs/latex/CALUPIG-TestScript.tex
+!docs/latex/CALUPIG-TestScript.pdf
+!docs/latex/makefile
+
 specs/
