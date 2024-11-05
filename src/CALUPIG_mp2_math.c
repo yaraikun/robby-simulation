@@ -23,7 +23,7 @@
 
 #include "mp2_math.h"
 
-#define NUMBER_OF_TERMS 10
+#define NUMBER_OF_TERMS 15
 
 /**
  * RaiseTo - Computes the value of x raised to the power of n (x^n).
