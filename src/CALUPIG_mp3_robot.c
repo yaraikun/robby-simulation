@@ -71,16 +71,16 @@ void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle)
 void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY, 
                       double dRobotAngle)
 {
-    // Normalize for more accurate results.
-    while (dRobotAngle > 180) dRobotAngle -= 360;
-    while (dRobotAngle < -180) dRobotAngle += 360;
+        // Normalize for more accurate results.
+        while (dRobotAngle > 180) dRobotAngle -= 360;
+        while (dRobotAngle < -180) dRobotAngle += 360;
 
-    // Convert angle to radians.
-    dRobotAngle *= PI / 180.0;
+        // Convert angle to radians.
+        dRobotAngle *= PI / 180.0;
 
-    // Update Robby's x and y coordinates.
-    *pfRobotX += fDistance * cosine(dRobotAngle);
-    *pfRobotY += fDistance * sine(dRobotAngle);
+        // Update Robby's x and y coordinates.
+        *pfRobotX += fDistance * cosine(dRobotAngle);
+        *pfRobotY += fDistance * sine(dRobotAngle);
 }
 
 /****************************************************************************** 
@@ -104,16 +104,16 @@ void TranslateForward(float fDistance, float *pfRobotX, float *pfRobotY,
 void TranslateBackward(float fDistance, float *pfRobotX, float *pfRobotY, 
                        double dRobotAngle)
 {
-    // Normalize for more accurate results.
-    while (dRobotAngle > 180) dRobotAngle -= 360;
-    while (dRobotAngle < -180) dRobotAngle += 360;
+        // Normalize for more accurate results.
+        while (dRobotAngle > 180) dRobotAngle -= 360;
+        while (dRobotAngle < -180) dRobotAngle += 360;
 
-    // Convert angle to radians.
-    dRobotAngle *= PI / 180;
+        // Convert angle to radians.
+        dRobotAngle *= PI / 180;
 
-    // Update Robby's x and y coordinates.
-    *pfRobotX -= fDistance * cosine(dRobotAngle);
-    *pfRobotY -= fDistance * sine(dRobotAngle);
+        // Update Robby's x and y coordinates.
+        *pfRobotX -= fDistance * cosine(dRobotAngle);
+        *pfRobotY -= fDistance * sine(dRobotAngle);
 }
 
 /******************************************************************************
