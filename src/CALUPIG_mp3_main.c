@@ -21,116 +21,107 @@
 
 int main(void)
 {
-        float fRobotX, fRobotY;  /* Robby coordinates */
-        double dRobotAngle;      /* Robby orientation */
+    float fRobotX, fRobotY;  /* Robby coordinates */
+    double dRobotAngle;      /* Robby orientation */
 
-        float fDistance;         /* Translate distance */
-        double dTheta;           /* Angle to add */
+    float fDistance;         /* Translate distance */
+    double dTheta;           /* Angle to add */
 
-        int nCommandCode;        /* User command */
+    int nCommandCode;        /* User command */
 
-        /* Initialize Robby */
-        InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
+    /* Initialize Robby */
+    InitializeReset(&fRobotX, &fRobotY, &dRobotAngle);
 
-        /* Simulation loop */
-        while (1) { 
-                /* Clear screen at start of every iteration */
-                printf("\033[H\033[J");
+    /* Simulation loop */
+    do { 
+        /* Clear screen at start of every iteration */
+        printf("\033[H\033[J");
 
-                /* Display command codes */
-                printf("Command Codes:\n"
-                       "0: Display Status\n"
-                       "1: Reset\n"
-                       "2: Translate Backward\n"
-                       "3: Rotate Clockwise\n"
-                       "4: Quit\n"
-                       "8: Translate Forward\n"
-                       "9: Rotate CounterClockwise\n"
-                       "Your command, master?: ");
+        /* Display command codes */
+        printf("Command Codes:\n"
+               "0: Display Status\n"
+               "1: Reset\n"
+               "2: Translate Backward\n"
+               "3: Rotate Clockwise\n"
+               "4: Quit\n"
+               "8: Translate Forward\n"
+               "9: Rotate CounterClockwise\n"
+               "Your command, master?: ");
 
-                /* Input validation */
-                if(scanf("%d", &nCommandCode) != 1)
-                        nCommandCode = -1;
+        /* Input validation */
+        if(scanf("%d", &nCommandCode) != 1)
+            nCommandCode = -1;
 
-                /* Clear input buffer before moving on */
-                while (getchar() != '\n');
+        /* Clear input buffer before moving on */
+        while (getchar() != '\n');
 
-                /* Handle command cod */
-                switch (nCommandCode) {
-                        case DISPLAY_STATUS:
-                                DisplayStatus(fRobotX, fRobotY, dRobotAngle); 
-                                break;
-                        case RESET:
-                                InitializeReset(&fRobotX, &fRobotY,
-                                                &dRobotAngle); 
-                                printf("Robot has been reset to initial position and angle.\n");
-                                break;
-                        case TRANSLATE_BACKWARD:
-                                printf("Enter translation distance: ");
-                                if (scanf("%f", &fDistance) == 1 &&
-                                    fDistance >= 0) {
-                                        TranslateBackward(fDistance, &fRobotX,
-                                                          &fRobotY,
-                                                          dRobotAngle);
-                                        printf("Robby moved to position (%.4f, %.4f).\n",
-                                               fRobotX, fRobotY);
-                                } else {
-                                        printf("Invalid distance. Please enter a non-negative number.\n");
-                                }
-                                while (getchar() != '\n');
-                                break;
-                        case TRANSLATE_FORWARD: 
-                                printf("Enter translation distance: ");
-                                if (scanf("%f", &fDistance) == 1 &&
-                                    fDistance >= 0) {
-                                        TranslateForward(fDistance, &fRobotX,
-                                                         &fRobotY,
-                                                         dRobotAngle);
-                                        printf("Robby moved to position (%.4f, %.4f).\n",
-                                               fRobotX, fRobotY);
-                                } else {
-                                        printf("Invalid distance. Please enter a non-negative number.\n");
-                                }
-                                while (getchar() != '\n');
-                                break;
-                        case ROTATE_CLOCKWISE:
-                                printf("Enter rotation angle: ");
-                                if (scanf("%lf", &dTheta) == 1 &&
-                                    dTheta >= 0) {
-                                        RotateClockwise(dTheta, &dRobotAngle);
-                                        printf("Robby rotated to angle %.4f degrees.\n",
-                                                dRobotAngle);
-                                } else {
-                                        printf("Invalid angle. Please enter a non-negative number.\n");
-                                }
-                                while (getchar() != '\n');
-                                break;
-                        case ROTATE_COUNTERCLOCKWISE: 
-                                printf("Enter rotation angle: ");
-                                if (scanf("%lf", &dTheta) == 1 &&
-                                    dTheta >= 0) {
-                                        RotateCounterClockwise(dTheta,
-                                                               &dRobotAngle);
-                                        printf("Robby rotated to angle %.4f degrees.\n",
-                                                dRobotAngle);
-                                } else {
-                                        printf("Invalid angle. Please enter a non-negative number.\n");
-                                }
-                                while (getchar() != '\n');
-                                break;
-                        case QUIT:
-                                Quit();
-                                return 0;
-                                break;
-                        default:
-                                printf("Invalid input. Please enter a valid command code.\n");
-                                break;
+        /* Handle command code */
+        switch (nCommandCode) {
+            case DISPLAY_STATUS:
+                DisplayStatus(fRobotX, fRobotY, dRobotAngle); 
+                break;
+            case RESET:
+                InitializeReset(&fRobotX, &fRobotY, &dRobotAngle); 
+                printf("Robot has been reset to initial position and angle.\n");
+                break;
+            case TRANSLATE_BACKWARD:
+                printf("Enter translation distance: ");
+                if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
+                    TranslateBackward(fDistance, &fRobotX, &fRobotY,
+                            dRobotAngle);
+                    printf("Robby moved to position (%.4f, %.4f).\n",
+                            fRobotX, fRobotY);
+                } else {
+                    printf("Invalid distance. Please enter a non-negative number.\n");
                 }
-
-                /* Pause after every handling command */
-                printf("Press Enter to continue...");
                 while (getchar() != '\n');
+                break;
+            case TRANSLATE_FORWARD: 
+                printf("Enter translation distance: ");
+                if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
+                    TranslateForward(fDistance, &fRobotX, &fRobotY,
+                            dRobotAngle);
+                    printf("Robby moved to position (%.4f, %.4f).\n",
+                            fRobotX, fRobotY);
+                } else {
+                    printf("Invalid distance. Please enter a non-negative number.\n");
+                }
+                while (getchar() != '\n');
+                break;
+            case ROTATE_CLOCKWISE:
+                printf("Enter rotation angle: ");
+                if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
+                    RotateClockwise(dTheta, &dRobotAngle);
+                    printf("Robby rotated to angle %.4f degrees.\n",
+                            dRobotAngle);
+                } else {
+                    printf("Invalid angle. Please enter a non-negative number.\n");
+                }
+                while (getchar() != '\n');
+                break;
+            case ROTATE_COUNTERCLOCKWISE: 
+                printf("Enter rotation angle: ");
+                if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
+                    RotateCounterClockwise(dTheta, &dRobotAngle);
+                    printf("Robby rotated to angle %.4f degrees.\n",
+                            dRobotAngle);
+                } else {
+                    printf("Invalid angle. Please enter a non-negative number.\n");
+                }
+                while (getchar() != '\n');
+                break;
+            case QUIT:
+                Quit();
+                break;
+            default:
+                printf("Invalid input. Please enter a valid command code.\n");
+                break;
         }
 
-        return 0; 
+        /* Pause after every handling command */
+        printf("Press Enter to continue...");
+        while (getchar() != '\n');
+    } while (nCommandCode != 4);
+
+    return 0; 
 }
