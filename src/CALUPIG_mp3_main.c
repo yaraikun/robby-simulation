@@ -50,7 +50,7 @@ int main(void)
 
         /* Input validation */
         if(scanf("%d", &nCommandCode) != 1)
-            nCommandCode = -1;
+           nCommandCode = -1;
 
         /* Clear input buffer before moving on */
         while (getchar() != '\n');
@@ -68,7 +68,7 @@ int main(void)
                 printf("Enter translation distance: ");
                 if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
                     TranslateBackward(fDistance, &fRobotX, &fRobotY,
-                            dRobotAngle);
+                                      dRobotAngle);
                     printf("Robby moved to position (%.4f, %.4f).\n",
                             fRobotX, fRobotY);
                 } else {
@@ -80,7 +80,7 @@ int main(void)
                 printf("Enter translation distance: ");
                 if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
                     TranslateForward(fDistance, &fRobotX, &fRobotY,
-                            dRobotAngle);
+                                     dRobotAngle);
                     printf("Robby moved to position (%.4f, %.4f).\n",
                             fRobotX, fRobotY);
                 } else {
