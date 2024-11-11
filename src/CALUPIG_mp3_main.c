@@ -49,8 +49,7 @@ int main(void)
                "Your command, master?: ");
 
         /* Input validation */
-        if(scanf("%d", &nCommandCode) != 1)
-           nCommandCode = -1;
+        scanf("%d", &nCommandCode);
 
         /* Clear input buffer before moving on */
         while (getchar() != '\n');
@@ -66,7 +65,8 @@ int main(void)
                 break;
             case TRANSLATE_BACKWARD:
                 printf("Enter translation distance: ");
-                if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
+                scanf("%f", &fDistance);
+                if (fDistance >= 0) {
                     TranslateBackward(fDistance, &fRobotX, &fRobotY,
                                       dRobotAngle);
                     printf("Robby moved to position (%.4f, %.4f).\n",
@@ -78,7 +78,8 @@ int main(void)
                 break;
             case TRANSLATE_FORWARD: 
                 printf("Enter translation distance: ");
-                if (scanf("%f", &fDistance) == 1 && fDistance >= 0) {
+                scanf("%f", &fDistance);
+                if (fDistance >= 0) {
                     TranslateForward(fDistance, &fRobotX, &fRobotY,
                                      dRobotAngle);
                     printf("Robby moved to position (%.4f, %.4f).\n",
@@ -90,7 +91,8 @@ int main(void)
                 break;
             case ROTATE_CLOCKWISE:
                 printf("Enter rotation angle: ");
-                if (scanf("%lf", &dTheta) == 1 && dTheta >= 0) {
+                scanf("%lf", &dTheta);
+                if (dTheta >= 0) {
                     RotateClockwise(dTheta, &dRobotAngle);
                     printf("Robby rotated to angle %.4f degrees.\n",
                             dRobotAngle);
