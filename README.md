@@ -26,7 +26,7 @@ The following command codes are available for controlling Robby:
 
 ## How to Use
 
-1. **Compile the Program**: Ensure you compile the main file alongside the object files for the robot and math functions.
+1. **Compile the Program**: Run "make" in the root directory and it should build the program in the build directory.
 2. **Run the Program**: Execute the compiled program.
 3. **Input Commands**: Follow the on-screen prompts to input command codes. After entering a command, Robby will execute the action and display the new state or position.
 4. **Exit**: Enter the command code `4` to quit the simulation.
