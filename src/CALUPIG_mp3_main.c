@@ -35,8 +35,14 @@ int main(void)
         /* Simulation loop */
         do { 
                 /* Displays command codes */
-                printf("Command Codes:\n"
-                       "0: Display Status, 1: Reset, 2: Translate Backward, 3: Rotate Clockwise, 4: Quit, 8: Translate Forward, 9: Rotate Counterclockwise\n"
+                printf("\nCommand Codes:\n"
+                       "0: Display Status\n"
+                       "1: Reset\n"
+                       "2: Translate Backward\n"
+                       "3: Rotate Clockwise\n"
+                       "4: Quit\n"
+                       "8: Translate Forward\n"
+                       "9: Rotate Counterclockwise\n"
                        "Your command, master?: ");
 
                 /* Ask user for input */
@@ -50,14 +56,14 @@ int main(void)
                         case RESET:
                                 InitializeReset(&fRobotX, &fRobotY,
                                                 &dRobotAngle); 
-                                printf("Robot has been reset to initial position and angle.\n");
+                                printf("\nRobot has been reset to initial position and angle.\n");
                                 break;
                         case TRANSLATE_BACKWARD:
                                 printf("Enter translation distance: ");
                                 scanf("%f", &fDistance);
                                 TranslateBackward(fDistance, &fRobotX,
                                                   &fRobotY, dRobotAngle);
-                                printf("Robby moved to position (%.4f, %.4f).\n",
+                                printf("\nRobby moved to position (%.4f, %.4f).\n",
                                         fRobotX, fRobotY);
                                 break;
                         case TRANSLATE_FORWARD: 
@@ -65,20 +71,21 @@ int main(void)
                                 scanf("%f", &fDistance);
                                 TranslateForward(fDistance, &fRobotX, &fRobotY,
                                                  dRobotAngle);
-                                printf("Robby moved to position (%.4f, %.4f).\n",
+                                printf("\nRobby moved to position (%.4f, %.4f).\n",
                                         fRobotX, fRobotY);
                                 break;
                         case ROTATE_CLOCKWISE:
                                 printf("Enter rotation angle: ");
                                 scanf("%lf", &dTheta);
                                 RotateClockwise(dTheta, &dRobotAngle);
-                                printf("Robby rotated to angle %.4f degrees.\n",
+                                printf("\nRobby rotated to angle %.4f degrees.\n",
                                         dRobotAngle);
                                 break;
                         case ROTATE_COUNTERCLOCKWISE: 
                                 printf("Enter rotation angle: ");
+                                scanf("%lf", &dTheta);
                                 RotateCounterClockwise(dTheta, &dRobotAngle);
-                                printf("Robby rotated to angle %.4f degrees.\n",
+                                printf("\nRobby rotated to angle %.4f degrees.\n",
                                         dRobotAngle);
                                 break;
                         case QUIT:
