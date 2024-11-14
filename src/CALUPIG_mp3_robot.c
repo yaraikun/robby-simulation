@@ -46,8 +46,7 @@ void InitializeReset(float *pfRobotX, float *pfRobotY, double *pdRobotAngle)
 ******************************************************************************/
 void DisplayStatus(float fRobotX, float fRobotY, double dRobotAngle)
 {
-        printf("\n");
-        printf("Robot Position: (%.4f, %.4f)\n", fRobotX, fRobotY);
+        printf("\nRobot Position: (%.4f, %.4f)\n", fRobotX, fRobotY);
         printf("Robot Orientation: %.2f degrees\n", dRobotAngle);
 }
 
