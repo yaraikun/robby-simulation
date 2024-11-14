@@ -34,6 +34,9 @@ int main(void)
 
         /* Simulation loop */
         do { 
+                /* Clears screen at the start of every iteration */
+                printf("\033[H\033[J");
+
                 /* Displays command codes */
                 printf("\nCommand Codes:\n"
                        "0: Display Status\n"
@@ -47,6 +50,7 @@ int main(void)
 
                 /* Ask user for input */
                 scanf("%d", &nCommandCode);
+                while (getchar() != '\n');
 
                 /* Handles command code */
                 switch (nCommandCode) {
@@ -61,6 +65,7 @@ int main(void)
                         case TRANSLATE_BACKWARD:
                                 printf("Enter translation distance: ");
                                 scanf("%f", &fDistance);
+                                while (getchar() != '\n');
                                 TranslateBackward(fDistance, &fRobotX,
                                                   &fRobotY, dRobotAngle);
                                 printf("\nRobby moved to position (%.4f, %.4f).\n",
@@ -69,6 +74,7 @@ int main(void)
                         case TRANSLATE_FORWARD: 
                                 printf("Enter translation distance: ");
                                 scanf("%f", &fDistance);
+                                while (getchar() != '\n');
                                 TranslateForward(fDistance, &fRobotX, &fRobotY,
                                                  dRobotAngle);
                                 printf("\nRobby moved to position (%.4f, %.4f).\n",
@@ -77,6 +83,7 @@ int main(void)
                         case ROTATE_CLOCKWISE:
                                 printf("Enter rotation angle: ");
                                 scanf("%lf", &dTheta);
+                                while (getchar() != '\n');
                                 RotateClockwise(dTheta, &dRobotAngle);
                                 printf("\nRobby rotated to angle %.4f degrees.\n",
                                         dRobotAngle);
@@ -84,6 +91,7 @@ int main(void)
                         case ROTATE_COUNTERCLOCKWISE: 
                                 printf("Enter rotation angle: ");
                                 scanf("%lf", &dTheta);
+                                while (getchar() != '\n');
                                 RotateCounterClockwise(dTheta, &dRobotAngle);
                                 printf("\nRobby rotated to angle %.4f degrees.\n",
                                         dRobotAngle);
@@ -95,6 +103,11 @@ int main(void)
                                 printf("Invalid input. Please enter a valid command code.\n");
                                 break;
                 }
+
+                /* Pauses screen after every iteration */
+                printf("\nPress enter to continue...");
+                while (getchar() != '\n');
+
         } while (nCommandCode != 4);
 
         return 0; 
