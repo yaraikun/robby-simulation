@@ -171,7 +171,7 @@ void RotateClockwise(double dTheta, double *pdRobotAngle)
 ******************************************************************************/
 void Quit(void)
 {
-        printf("END SIMULATION\n");
+        printf("END SIMULATION");
 }
 
 /**************************** END OF THIS FILE *******************************/
