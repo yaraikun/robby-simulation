@@ -38,7 +38,7 @@ int main(void)
                 printf("\033[H\033[J");
 
                 /* Displays command codes */
-                printf("\nCommand Codes:\n"
+                printf("Command Codes:\n"
                        "0: Display Status\n"
                        "1: Reset\n"
                        "2: Translate Backward\n"
@@ -105,7 +105,7 @@ int main(void)
                 }
 
                 /* Pauses screen after every iteration */
-                printf("\nPress enter to continue...");
+                printf("\nPress enter to continue...\n");
                 while (getchar() != '\n');
 
         } while (nCommandCode != 4);
