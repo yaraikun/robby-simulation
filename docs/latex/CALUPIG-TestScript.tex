@@ -53,13 +53,13 @@
     \centering
     \renewcommand{\arraystretch}{1.5}
     \begin{tabularx}{\textwidth}{
-            |>{\raggedright\arraybackslash}p{2cm}
+            |>{\raggedright\arraybackslash}p{3cm}
             |>{\raggedright\arraybackslash}p{0.20cm}
-            |>{\raggedright\arraybackslash}p{6cm}
+            |>{\raggedright\arraybackslash}p{2.5cm}
             |>{\raggedright\arraybackslash}X
-            |>{\raggedright\arraybackslash}p{2cm}
-            |>{\raggedright\arraybackslash}p{2cm}
-            |>{\raggedright\arraybackslash}p{2cm}|
+            |>{\raggedright\arraybackslash}p{3cm}
+            |>{\raggedright\arraybackslash}p{3cm}
+            |>{\raggedright\arraybackslash}p{1cm}|
         }
         \hline
 
@@ -72,12 +72,303 @@
         \textbf{Pass or Fail?} \\ 
         \hline
 
-        RaiseTo &
+        InitializeReset &
         1 &
-        Base (x) and Exponent (n) are positive. &
-        x = 2, n = 3 &
+        pfRobotX, pfRobotY, and pdRobotAngle are positive numbers &
+        pfRobotX = 100, pfRobotY = 100, pdRobotAngle = 100 &
+        pfRObotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        pfRObotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        Pass \\
+        \hline
+
+        InitializeReset &
+        2 &
+        pfRobotX, pfRobotY, and pdRobotAngle are negative numbers &
+        pfRobotX = -100, pfRobotY = -100, pdRobotAngle = -100 &
+        pfRObotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        pfRObotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        Pass \\
+        \hline
+
+        InitializeReset &
+        3 &
+        pfRobotX, pfRobotY, and pdRobotAngle are zero &
+        pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        pfRObotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        pfRObotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        Pass \\
+        \hline
+
+        TranslateForward &
+        1 &
+        fDistance and dRobotAngle are positive &
+        fDistance = 100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 45 &
+        pfRobotX = 70.7107..., pfRobotY = 70.7107... &
+        pfRobotX = 70.7107..., pfRobotY = 70.7107... &
+        Pass \\
+        \hline
+
+        TranslateForward &
+        2 &
+        fDistance is zero and dRobotAngle is positive &
+        fDistance = 0, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 45 &
+        pfRobotX = 0.0..., pfRobotY = 0.0... &
+        pfRobotX = 0.0..., pfRobotY = 0.0... &
+        Pass \\
+        \hline
+
+        TranslateForward &
+        3 &
+        fDistance is negative and dRobotAngle is positive &
+        fDistance = -100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 45 &
+        pfRobotX = -70.7107..., pfRobotY = -70.7107... &
+        pfRobotX = -70.7107..., pfRobotY = -70.7107... &
+        Pass \\
+        \hline
+
+
+    \end{tabularx}
+\end{table}
+\newpage
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{
+            |>{\raggedright\arraybackslash}p{3cm}
+            |>{\raggedright\arraybackslash}p{0.20cm}
+            |>{\raggedright\arraybackslash}p{2.5cm}
+            |>{\raggedright\arraybackslash}X
+            |>{\raggedright\arraybackslash}p{3cm}
+            |>{\raggedright\arraybackslash}p{3cm}
+            |>{\raggedright\arraybackslash}p{1cm}|
+        }
+        \hline
+
+        \textbf{Function Name} &
+        \textbf{\#} &
+        \textbf{Test Description} &
+        \textbf{Sample Input} &
+        \textbf{Expected Result} &
+        \textbf{Actual Result} &
+        \textbf{Pass or Fail?} \\ 
+        \hline
+
+
+        TranslateForward &
+        4 &
+        fDistance is positive and dRobotAngle is negative. &
+        fDistance = 100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = -45 &
+        pfRobotX = 70.7107..., pfRobotY = -70.7107... &
+        pfRobotX = 70.7107..., pfRobotY = -70.7107... &
+        Pass \\
+        \hline
+
+        TranslateForward &
+        5 &
+        fDistance is zero and dRobotAngle is positive. &
+        fDistance = 0, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = -45 &
+        pfRobotX = 0.0... pfRobotY = 0.0... &
+        pfRobotX = 0.0... pfRobotY = 0.0... &
+        Pass \\
+        \hline
+
+        TranslateForward &
+        6 &
+        fDistance and dRobotAngle are negative. &
+        fDistance = -100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = -45 &
+        pfRobotX = -70.7107..., pfRobotY = 70.7107... &
+        pfRobotX = -70.7107..., pfRobotY = 70.7107... &
+        Pass \\
+        \hline
+
+        TranslateForward &
+        7 &
+        fDistance is positive and dRobotAngle is zero. &
+        fDistance = 100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        pfRobotX = 100.0..., pfRobotY = 0.0... &
+        pfRobotX = 100.0..., pfRobotY = 0.0... &
+        Pass \\
+        \hline
+
+        TranslateForward &
         8 &
-        8.0000... &
+        fDistance and dRobotAngle are zero. &
+        fDistance = 0, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        pfRobotX = 0.0..., pfRobotY = 0.0... &
+        pfRobotX = 0.0..., pfRobotY = 0.0... &
+        Pass \\
+        \hline
+
+        TranslateForward &
+        9 &
+        fDistance is negative and dRobotAngle is zero. &
+        fDistance = -100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        pfRobotX=-100.0..., pfRobotY = 0.0... &
+        pfRobotX=-100.0..., pfRobotY = 0.0... &
+        Pass \\
+        \hline
+
+        TranslateBackward &
+        1 &
+        fDistance and dRobotAngle is positive &
+        fDistance = 100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 45 &
+        pfRobotX = -70.7107..., pfRobotY = -70.7107... &
+        pfRobotX = -70.7107..., pfRobotY = -70.7107... &
+        Pass \\
+        \hline
+
+        TranslateBackward &
+        2 &
+        fDistance is zero and dRobotAngle is positive &
+        fDistance = 0, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 45 &
+        pfRobotX = 0.0..., pfRobotY = 0.0... &
+        pfRobotX = 0.0... pfRobotY = 0.0... &
+        Pass \\
+        \hline
+
+        TranslateBackward &
+        3 &
+        fDistance is negative and dRobotAngle is positive &
+        fDistance = -100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 45 &
+        pfRobotX = 70.7107..., pfRobotY = 70.7107... &
+        pfRobotX = 70.7107..., pfRobotY = 70.7107... &
+        Pass \\
+        \hline
+
+    \end{tabularx}
+\end{table}
+\newpage
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{
+            |>{\raggedright\arraybackslash}p{3cm}
+            |>{\raggedright\arraybackslash}p{0.20cm}
+            |>{\raggedright\arraybackslash}p{2.5cm}
+            |>{\raggedright\arraybackslash}X
+            |>{\raggedright\arraybackslash}p{3cm}
+            |>{\raggedright\arraybackslash}p{3cm}
+            |>{\raggedright\arraybackslash}p{1cm}|
+        }
+        \hline
+
+        \textbf{Function Name} &
+        \textbf{\#} &
+        \textbf{Test Description} &
+        \textbf{Sample Input} &
+        \textbf{Expected Result} &
+        \textbf{Actual Result} &
+        \textbf{Pass or Fail?} \\ 
+        \hline
+
+        TranslateBackward &
+        4 &
+        fDistance is positive and dRobotAngle is negative. &
+        fDistance = 100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = -45 &
+        pfRobotX = -70.7107..., pfRobotY = 70.7107... &
+        pfRobotX = -70.7107..., pfRobotY = 70.7107... &
+        Pass \\
+        \hline
+
+        TranslateBackward &
+        5 &
+        fDistance is zero and dRobotAngle is negative. &
+        fDistance = 0, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = -45 &
+        pfRobotX = 0.0..., pfRobotY = 0.0... &
+        pfRobotX = 0.0... pfRobotY = 0.0... &
+        Pass \\
+        \hline
+
+        TranslateBackward &
+        6 &
+        fDistance is negative and dRobotAngle is negative. &
+        fDistance = 0, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = -45 &
+        pfRobotX = 70.7107..., pfRobotY = -70.7107... &
+        pfRobotX = 70.7107..., pfRobotY = -70.7107... &
+        Pass \\
+        \hline
+
+        TranslateBackward &
+        7 &
+        fDistance is positive and dRobotAngle is zero. &
+        fDistance = 100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        pfRobotX=-100.0..., pfRobotY = 0.0... &
+        pfRobotX=-100.0..., pfRobotY = 0.0... &
+        Pass \\
+        \hline
+
+        TranslateBackward &
+        8 &
+        fDistance and dRobotAngle are zero. &
+        fDistance = 0, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        pfRobotX = 0.0..., pfRobotY = 0.0
+        pfRobotX = 0.0..., pfRobotY = 0.0... &
+        pfRobotX = 0.0, pfRobotY = 0.0 &
+        Pass \\
+        \hline
+
+        TranslateBackward &
+        9 &
+        fDistance is negative and dRobotAngle is zero. &
+        fDistance = 100, pfRobotX = 0, pfRobotY = 0, pdRobotAngle = 0 &
+        pfRobotX = 100.0..., pfRobotY = 0.0... &
+        pfRobotX = 100.0..., pfRobotY = 0.0... &
+        Pass \\
+        \hline
+
+        RotateCounter- Clockwise &
+        1 &
+        dTheta is positive. &
+        dTheta = 10, pdRobotAngle = 80 &
+        pdRobotAngle = 90.0... &
+        pdRobotAngle = 90.0... &
+        Pass \\
+        \hline
+
+        RotateCounter- Clockwise &
+        2 &
+        dTheta is zero. &
+        dTheta = 0, pdRobotAngle = 80 &
+        pdRobotAngle = 80.0... &
+        pdRobotAngle = 80.0... &
+        Pass \\
+        \hline
+
+        RotateCounter- Clockwise &
+        3 &
+        dTheta is negative. &
+        dTheta = -10, pdRobotAngle = 80 &
+        pdRobotAngle = 70.0... &
+        pdRobotAngle = 70.0... &
+        Pass \\
+        \hline
+
+        RotateClockwise &
+        1 &
+        dTheta is positive. &
+        dTheta = 10, pdRobotAngle = 80 &
+        pdRobotAngle = 70.0... &
+        pdRobotAngle = 70.0... &
+        Pass \\
+        \hline
+
+        RotateClockwise &
+        2 &
+        dTheta is zero. &
+        dTheta = 0, pdRobotAngle = 80 &
+        pdRobotAngle = 80.0... &
+        pdRobotAngle = 80.0... &
+        Pass \\
+        \hline
+
+        RotateClockwise &
+        1 &
+        dTheta is negative. &
+        dTheta = -10, pdRobotAngle = 80 &
+        pdRobotAngle = 90.0... &
+        pdRobotAngle = 90.0... &
         Pass \\
         \hline
 
