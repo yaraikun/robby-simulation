@@ -39,14 +39,14 @@ int main(void)
 
         /* Displays command codes */
         printf("Command Codes:\n"
-                "0: Display Status\n"
-                "1: Reset\n"
-                "2: Translate Backward\n"
-                "3: Rotate Clockwise\n"
-                "4: Quit\n"
-                "8: Translate Forward\n"
-                "9: Rotate Counterclockwise\n"
-                "Your command, master?: ");
+               "0: Display Status\n"
+               "1: Reset\n"
+               "2: Translate Backward\n"
+               "3: Rotate Clockwise\n"
+               "4: Quit\n"
+               "8: Translate Forward\n"
+               "9: Rotate Counterclockwise\n"
+               "Your command, master?: ");
 
         /* Ask user for input */
         scanf("%d", &nCommandCode);
