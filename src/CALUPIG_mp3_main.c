@@ -50,7 +50,7 @@ int main(void)
 
         /* Ask user for input */
         scanf("%d", &nCommandCode);
-        while (getchar() != '\n');
+        while (getchar() != '\n');      /* This clears the input buffer */
 
         /* Handles command code */
         switch (nCommandCode) {
